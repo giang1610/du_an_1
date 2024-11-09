@@ -39,9 +39,55 @@ class AdminSanPham{
                 ':hinh_anh' => $hinh_anh
                
             ]);
+            return $this->conn->lastInsertId();
+        }catch (Exception $e){
+            echo "lỗi" . $e ->getMessage();
+        }
+    }
+
+    public function insertAlbumAnhSanPham($san_pham_id	,$link_hinh_anh){
+        try{
+            $sql = 'INSERT INTO hinh_anh_san_phams (san_pham_id,link_hinh_anh) 
+            VALUES(:san_pham_id,:link_hinh_anh)
+            ';
+            $stmt = $this->conn->prepare($sql);
+            $stmt ->execute([
+                ':san_pham_id' => $san_pham_id,
+                ':link_hinh_anh' => $link_hinh_anh
+               
+            ]);
             return true;
         }catch (Exception $e){
             echo "lỗi" . $e ->getMessage();
         }
     }
+
+    public function getDetailSanPham($id){
+        try{
+            $sql = 'SELECT * FROM san_phams WHERE id = :id';
+            
+           
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt ->execute([':id'=>$id]);
+            return $stmt->fetch();
+        }catch (Exception $e){
+            echo "lỗi" . $e ->getMessage();
+        }
+    }
+
+    public function getListAnhSanPham($id){
+        try{
+            $sql = 'SELECT * FROM hinh_anh_san_phams WHERE san_pham_id = :id';
+            
+           
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt ->execute([':id'=>$id]);
+            return $stmt->fetchAll();
+        }catch (Exception $e){
+            echo "lỗi" . $e ->getMessage();
+        }
+    }
+
 }
