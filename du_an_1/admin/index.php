@@ -7,10 +7,11 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './controllers/AdminDanhMucControllers.php';
 require_once './controllers/AdminSanPhamControllers.php';
-
+require_once './controllers/AdminDonHangControllers.php';
 // Require toàn bộ file Models
 require_once './models/AdminDanhMuc.php';
 require_once './models/AdminSanPham.php';
+require_once './models/AdminDonHang.php';
 
 // Route
 $act = strtolower($_GET['act'] ?? '/');
@@ -32,6 +33,12 @@ match ($act) {
     'from-sua-san-pham' => (new AdminSanPhamControllers())->formEditSanPham(),
     'sua-san-pham' => (new AdminSanPhamControllers())->posteditSanPham(), 
     // 'xoa-san-pham' => (new AdminSanPhamControllers())->deleteSanPham(),
-   
+   //route quản lí đơn hàng
+   'don-hang' => (new AdminDonHangControllers())->danhSachDonHang(),
+   'from-sua-don-hang' => (new AdminDonHangControllers())->formEditDonHang(),
+   'sua-don-hang' => (new AdminDonHangControllers())->posteditDonHang(),
+   'chi-tiet-don-hang' => (new AdminDonHangControllers())->detaiDonHang(), 
+   'xoa-don-hang' => (new AdminDonHangControllers())->deleteDonHang(),
+  
 };
 ?>
