@@ -62,7 +62,7 @@
                    
                    <td>
                     <div class="btn-group">
-                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-san-pham&id_san-pham='. $donHang['id']?>"><button class="btn btn-warning">Sửa</button></a>
+                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-don-hang&id_don_hang='. $donHang['id']?>"><button class="btn btn-warning">Sửa</button></a>
                     <a href="<?= BASE_URL_ADMIN .'?act=chi-tiet-don-hang&id_don_hang='. $donHang['id']?>">
                     <button class="btn btn-primary">Chi tiết</button></a>
                     </div>
