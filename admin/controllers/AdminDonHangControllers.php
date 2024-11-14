@@ -24,46 +24,76 @@ class AdminDonHangControllers {
     }
    
 
-    // public function formEditDonHang() {
+    public function formEditDonHang() {
      
     
-    //     $id = $_GET['id_san_pham'];
-    //     $DonHang = $this->modelDonHang->getDetailDonHang($id);
-    //     var_dump($DonHang);die;
-    //     $listDonHang =$this->modelDonHang->getListAnhDonHang($id);
-    //     $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
-    //     if($DonHang){
-    //         require_once "./views/DonHang/editDonHang.php";
-    //     }else{
-    //         header("location:".BASE_URL_ADMIN .'?act=san-pham');
-    //             exit();
-    //     }
+        $id = $_GET['id_don_hang'];
+        $donHang = $this->modelDonHang->getDetailDonHang($id);
+        $listTrangThaiDonHang= $this->modelDonHang->getAllTrangThaiDonHang();
+        if($donHang){
+            require_once "./views/donhang/editDonHang.php";
+            deleteSessionError();
+        }else{
+            header("location:".BASE_URL_ADMIN .'?act=don-hang');
+                exit();
+        }
        
 
-    // }
+    }
 
-    // public function posteditDonHang() {
-    //     if($_SERVER['REQUEST_METHOD'] =='POST'){
-    //         $id = $_POST['id'];
-    //         $ten_danh_muc = $_POST['ten_danh_muc'];
-    //         $mo_ta = $_POST['mo_ta'];
+   
+    public function posteditDonHang() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $don_hang_id = $_POST['id_don_hang'] ?? '';
+    
+    
+            $ten_nguoi_nhan = $_POST['ten_nguoi_nhan'] ?? '';
+            $sdt_nguoi_nhan = $_POST['sdt_nguoi_nhan'] ?? '';
+            $email_nguoi_nhan = $_POST['email_nguoi_nhan'] ?? '';
+            $dia_chi_nguoi_nhan= $_POST['dia_chi_nguoi_nhan'] ?? '';
+            $ghi_chu= $_POST['ghi_chu'] ?? '';
+            $trang_thai_id = $_POST['trang_thai_id'] ?? '';
+    
+           
+    
+            $errors = [];
+            
+            if (empty($ten_nguoi_nhan)) {
+                $errors['ten_nguoi_nhan'] = 'Tên người nhân không được để trống';
+            }
+            if (empty($sdt_nguoi_nhan)) {
+                $errors['sdt_nguoi_nhan'] = 'SĐT không được để trống';
+            }
+            if (empty($email_nguoi_nhan)) {
+                $errors['email_nguoi_nhan'] = 'Email không được để trống';
+            }
+            if (empty($dia_chi_nguoi_nhan)) {
+                $errors['email_nguoi_nhan'] = 'Địa chỉ không được để trống';
+            }
+            if (empty($trang_thai_id)) {
+                $errors['trang_thai_id'] = 'Trạng thái đơn hàng';
+            }
+            
+            $_SESSION['error'] = $errors;
+           
+            if (empty($errors)) {
+                // Gọi hàm update sản phẩm và chuyển hướng về trang "san-pham"
+                $this->modelDonHang->updateDonHang($ten_nguoi_nhan, $sdt_nguoi_nhan, $email_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $trang_thai_id, $don_hang_id);
+                // Chuyển hướng về trang san-pham sau khi cập nhật thành công
+                header("Location: ".BASE_URL_ADMIN."?act=don-hang");
+                exit();
+    
+            } else {
+                // Nếu có lỗi, chuyển về form sửa sản phẩm với ID của sản phẩm
+                $_SESSION['flash'] = true;
+                header("Location: ".BASE_URL_ADMIN."?act=from-sua-don-hang&id_don_hag=".$don_hang_id);
+                exit();
+            }
+        }
 
-    //         $errors = [];
-    //         if(empty($ten_danh_muc)){
-    //             $errors['ten_danh_muc'] = 'Tên danh mục không trống';
-    //         }
-    //         if(empty($errors)){
-    //             $this->modelDonHang->updateDonHang($id,$ten_danh_muc,$mo_ta);
-    //             header("location:".BASE_URL_ADMIN .'?act=DonHang');
-    //             exit();
 
-    //         }else{
-    //             $DonHang = ['id' => $id,'ten_danh_muc'=> $ten_danh_muc,'mo_ta'=>$mo_ta ];
-    //             require_once "./views/DonHang/editDonHang.php";
-    //         }
-    //     }
-    // }
 
+    }
     // public function deleteDonHang() {
     //     $id = $_GET['id_danh_muc'];
     

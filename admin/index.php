@@ -40,7 +40,7 @@ match ($act) {
    'from-sua-don-hang' => (new AdminDonHangControllers())->formEditDonHang(),
    'sua-don-hang' => (new AdminDonHangControllers())->posteditDonHang(),
    'chi-tiet-don-hang' => (new AdminDonHangControllers())->detailDonHang(), 
-   'xoa-don-hang' => (new AdminDonHangControllers())->deleteDonHang(),
+
   
 };
 ?>

@@ -76,39 +76,28 @@ class AdminDonHang{
         
     }
 
-   /* public function insertSanPham($ten_san_pham,$gia_san_pham,$gia_khuyen_mai,$so_luong,$ngay_nhap,$danh_muc_id,$trang_thai,$mo_ta,$hinh_anh){
+    public function updateDonHang($ten_nguoi_nhan, $sdt_nguoi_nhan, $email_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $trang_thai_id, $don_hang_id){
         try{
-            $sql = 'INSERT INTO san_phams (ten_san_pham,gia_san_pham,gia_khuyen_mai,so_luong,ngay_nhap,danh_muc_id,trang_thai,mo_ta,hinh_anh) 
-            VALUES(:ten_san_pham,:gia_san_pham,:gia_khuyen_mai,:so_luong,:ngay_nhap,:danh_muc_id,:trang_thai,:mo_ta,:hinh_anh)
+           
+            $sql = 'UPDATE don_hangs
+            SET
+           ten_nguoi_nhan = :ten_nguoi_nhan,
+            sdt_nguoi_nhan= :sdt_nguoi_nhan,
+           email_nguoi_nhan = :email_nguoi_nhan,
+            dia_chi_nguoi_nhan = :dia_chi_nguoi_nhan,
+            ghi_chu = :ghi_chu,
+           trang_thai_id = :trang_thai_id
+            where id = :id
             ';
             $stmt = $this->conn->prepare($sql);
             $stmt ->execute([
-                ':ten_san_pham' => $ten_san_pham,
-                ':gia_san_pham' => $gia_san_pham,
-                ':gia_khuyen_mai' => $gia_khuyen_mai,
-                ':so_luong' => $so_luong,
-                ':ngay_nhap' => $ngay_nhap,
-                ':danh_muc_id' => $danh_muc_id,
-                ':trang_thai' => $trang_thai,
-                ':mo_ta' => $mo_ta,
-                ':hinh_anh' => $hinh_anh
-               
-            ]);
-            return $this->conn->lastInsertId();
-        }catch (Exception $e){
-            echo "lỗi" . $e ->getMessage();
-        }
-    }
-
-    public function insertAlbumAnhSanPham($san_pham_id	,$link_hinh_anh){
-        try{
-            $sql = 'INSERT INTO hinh_anh_san_phams (san_pham_id,link_hinh_anh) 
-            VALUES(:san_pham_id,:link_hinh_anh)
-            ';
-            $stmt = $this->conn->prepare($sql);
-            $stmt ->execute([
-                ':san_pham_id' => $san_pham_id,
-                ':link_hinh_anh' => $link_hinh_anh
+                ':ten_nguoi_nhan' => $ten_nguoi_nhan,
+                ':sdt_nguoi_nhan' => $sdt_nguoi_nhan,
+                ':email_nguoi_nhan' => $email_nguoi_nhan,
+                ':dia_chi_nguoi_nhan' => $dia_chi_nguoi_nhan,
+                ':ghi_chu' => $ghi_chu,
+                ':trang_thai_id' => $trang_thai_id,
+                ':id' => $don_hang_id
                
             ]);
             return true;
@@ -116,33 +105,4 @@ class AdminDonHang{
             echo "lỗi" . $e ->getMessage();
         }
     }
-
-    public function getDetailSanPham($id){
-        try{
-            $sql = 'SELECT * FROM san_phams WHERE id = :id';
-            
-           
-            
-            $stmt = $this->conn->prepare($sql);
-            $stmt ->execute([':id'=>$id]);
-            return $stmt->fetch();
-        }catch (Exception $e){
-            echo "lỗi" . $e ->getMessage();
-        }
-    }
-
-    public function getListAnhSanPham($id){
-        try{
-            $sql = 'SELECT * FROM hinh_anh_san_phams WHERE san_pham_id = :id';
-            
-           
-            
-            $stmt = $this->conn->prepare($sql);
-            $stmt ->execute([':id'=>$id]);
-            return $stmt->fetchAll();
-        }catch (Exception $e){
-            echo "lỗi" . $e ->getMessage();
-        }
-    }*/
-
 }
