@@ -76,7 +76,7 @@ class AdminDonHang{
         
     }
 
-    public function updateDonHang($ten_nguoi_nhan, $sdt_nguoi_nhan, $email_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $trang_thai_id, $don_hang_id){
+    public function updateDonHang($ten_nguoi_nhan, $sdt_nguoi_nhan, $email_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $trang_thai_id, $id){
         try{
            
             $sql = 'UPDATE don_hangs
@@ -87,7 +87,7 @@ class AdminDonHang{
             dia_chi_nguoi_nhan = :dia_chi_nguoi_nhan,
             ghi_chu = :ghi_chu,
            trang_thai_id = :trang_thai_id
-            where id = :id
+            WHERE id = :id
             ';
             $stmt = $this->conn->prepare($sql);
             $stmt ->execute([
@@ -97,9 +97,11 @@ class AdminDonHang{
                 ':dia_chi_nguoi_nhan' => $dia_chi_nguoi_nhan,
                 ':ghi_chu' => $ghi_chu,
                 ':trang_thai_id' => $trang_thai_id,
-                ':id' => $don_hang_id
+                ':id' => $id
                
+
             ]);
+          
             return true;
         }catch (Exception $e){
             echo "lỗi" . $e ->getMessage();

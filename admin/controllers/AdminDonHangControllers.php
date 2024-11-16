@@ -1,5 +1,4 @@
 <?php
-
 class AdminDonHangControllers {
 
     public $modelDonHang;
@@ -52,7 +51,7 @@ class AdminDonHangControllers {
             $email_nguoi_nhan = $_POST['email_nguoi_nhan'] ?? '';
             $dia_chi_nguoi_nhan= $_POST['dia_chi_nguoi_nhan'] ?? '';
             $ghi_chu= $_POST['ghi_chu'] ?? '';
-            $trang_thai_id = $_POST['trang_thai_id'] ?? '';
+            $trang_thai_id = $_POST['trang_thai_id'];
     
            
     
@@ -76,19 +75,20 @@ class AdminDonHangControllers {
             
             $_SESSION['error'] = $errors;
            
-            if (empty($errors)) {
+             if (empty($errors)) {
                 // Gọi hàm update sản phẩm và chuyển hướng về trang "san-pham"
                 $this->modelDonHang->updateDonHang($ten_nguoi_nhan, $sdt_nguoi_nhan, $email_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $trang_thai_id, $don_hang_id);
                 // Chuyển hướng về trang san-pham sau khi cập nhật thành công
                 header("Location: ".BASE_URL_ADMIN."?act=don-hang");
                 exit();
+                // var_dump($abc);die();
     
             } else {
                 // Nếu có lỗi, chuyển về form sửa sản phẩm với ID của sản phẩm
                 $_SESSION['flash'] = true;
-                header("Location: ".BASE_URL_ADMIN."?act=from-sua-don-hang&id_don_hag=".$don_hang_id);
-                exit();
-            }
+                 header("Location: ".BASE_URL_ADMIN."?act=from-sua-don-hang&id_don_hang=".$don_hang_id);
+                 exit();
+             }
         }
 
 
