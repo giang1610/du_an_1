@@ -5,7 +5,17 @@ class AdminTaiKhoan{
     {
         $this->conn = connectDB();
     }
-
+    // public function getAllTrangThaiQuanTri(){
+    //     try{
+    //         $sql = 'SELECT  * FROM tai_khoans WHERE trang_thai=:trang_thai';
+           
+    //         $stmt = $this->conn->prepare($sql);
+    //         $stmt ->execute();
+    //         return $stmt->fetchAll();
+    //     }catch (Exception $e){
+    //         echo "lỗi" . $e ->getMessage();
+    //     }
+    // }
     public function getAllTaiKhoan($chuc_vu_id){
         try{
             $sql = 'SELECT * FROM tai_khoans WHERE chuc_vu_id = :chuc_vu_id';
@@ -36,34 +46,68 @@ class AdminTaiKhoan{
             echo "lỗi" . $e ->getMessage();
         }
     }
-
-//     public function updateDanhMuc($id,$ten_danh_muc, $mo_ta){
-//         try{
-//             $sql = 'UPDATE danh_mucs set ten_danh_muc = :ten_danh_muc,mo_ta =:mo_ta WHERE id =:id';
-//             $stmt = $this->conn->prepare($sql);
-//             $stmt ->execute([
-//                 ':ten_danh_muc' => $ten_danh_muc,
-//                 ':mo_ta' => $mo_ta,
-//                 ':id' => $id
-//             ]);
-//             return true;
-//         }catch (Exception $e){
-//             echo "lỗi" . $e ->getMessage();
-//         }
-//     }
-
-//     public function getDetailDanhMuc($id){
-//         try{
-//             $sql = 'SELECT * FROM danh_mucs Where id = :id';
-//             $stmt = $this->conn->prepare($sql);
-//             $stmt ->execute([
-//                 ':id' => $id
+    
+    public function getDetailTaiKhoan($id){
+        try{
+            $sql = 'SELECT * FROM tai_khoans Where id = :id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt ->execute([
+                ':id' => $id
                
-//             ]);
-//             return $stmt->fetch();
-//         }catch (Exception $e){
-//             echo "lỗi" . $e ->getMessage();
-//         }
-//     }
+            ]);
+            return $stmt->fetch();
+        }catch (Exception $e){
+            echo "lỗi" . $e ->getMessage();
+        }
+    }
+
+    public function updateTaiKhoan($id,  $ho_ten, $email, $so_dien_thoai, $trang_thai){
+        try{
+            $sql = 'UPDATE tai_khoans SET ho_ten = :ho_ten,email=:email,so_dien_thoai =:so_dien_thoai,trang_thai=:trang_thai WHERE id =:id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt ->execute([
+                ':ho_ten' => $ho_ten,
+                ':email' => $email,
+                ':so_dien_thoai'=> $so_dien_thoai,
+                ':trang_thai'=> $trang_thai,
+                ':id' => $id
+            ]);
+            return true;
+        }catch (Exception $e){
+            echo "lỗi" . $e ->getMessage();
+        }
+    }
+    public function resetPassword($id,  $mat_khau){
+        try{
+            $sql = 'UPDATE tai_khoans SET mat_khau = :mat_khau WHERE id =:id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt ->execute([
+                ':mat_khau' => $mat_khau,
+               ':id'=>$id
+            ]);
+            return true;
+        }catch (Exception $e){
+            echo "lỗi" . $e ->getMessage();
+        }
+    }
+    public function updateTaiKhoanKhachHang($id,  $ho_ten, $email, $so_dien_thoai,$gioi_tinh,$dia_chi, $trang_thai){
+        try{
+            $sql = 'UPDATE tai_khoans SET ho_ten = :ho_ten,email=:email,so_dien_thoai =:so_dien_thoai,gioi_tinh=:gioi_tinh,dia_chi=:dia_chi,trang_thai=:trang_thai WHERE id =:id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt ->execute([
+                ':ho_ten' => $ho_ten,
+                ':email' => $email,
+                ':so_dien_thoai'=> $so_dien_thoai,
+                ':gioi_tinh'=> $gioi_tinh,
+                ':dia_chi'=> $dia_chi,
+                ':trang_thai'=> $trang_thai,
+                ':id' => $id
+            ]);
+            return true;
+        }catch (Exception $e){
+            echo "lỗi" . $e ->getMessage();
+        }
+    }
+
 
 }

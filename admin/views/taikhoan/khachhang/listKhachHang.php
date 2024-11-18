@@ -15,7 +15,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản lý tài khoản quản trị</h1>
+            <h1>Quản lý tài khoản khách hàng</h1>
           </div>
           
         </div>
@@ -31,9 +31,9 @@
 
             <div class="card">
               <div class="card-header">
-               <a href="<?= BASE_URL_ADMIN .'?act=from-them-quan-tri'?>">
+               <!-- <a href="<?= BASE_URL_ADMIN .'?act=from-them-quan-tri'?>">
                 <button class="btn btn-success">Thêm tài khoản</button>
-               </a>
+               </a> -->
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -42,26 +42,42 @@
                   <tr>
                     <th>STT</th>
                     <th>Họ tên</th>
+                    <th>Ảnh đại diện</th>
                     <th>Email</th>
                     <th>Số điện thoại</th>
+                    <th>Ngày sinh</th>
+                    <!-- <th>Giới tính</th> -->
+                    <th>Địa chỉ</th>
                     <th>Trạng thái</th>
                     <th>Thao tác</th>                 
                   </tr>
                   </thead>
                   <tbody>
-                    <?php foreach($listQuanTri as $key=> $khachHang) :?>
+                    <?php foreach( $listKhachHang as $key=> $khachHang) :?>
 
                   <tr>
                    <td><?= $key+1 ?></td>
                    <td><?= $khachHang['ho_ten']  ?></td>
+                   <td>
+                    <img src="<?=BASE_URL . $khachHang['anh_dai_dien']  ?>" style="width:100px" alt=""
+                    onerror="this.onerorr=null; this.src='https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png'"
+                    >
+                    
+                   </td>
                    <td><?= $khachHang['email']  ?></td>
                    <td><?= $khachHang['so_dien_thoai']  ?></td>
+                   <td><?=formatDate($khachHang['ngay_sinh'])?></td>
+                   <td><?= $khachHang['dia_chi']  ?></td>
                    <td><?= $khachHang['trang_thai']==1 ? 'Active':'Inactive'  ?></td>
                    <td>
-                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-quan-tri&id_quan_tri='. $khachHang['id']?>"><button class="btn btn-warning">Sửa</button></a>
-                    <a href="<?= BASE_URL_ADMIN .'?act=reset-password&id_quan_tri='. $khachHang['id']?>" onclick="return confirm('Bạn có muoonns reset password của tài khoản này không?')">
-                     <button class="btn btn-danger">Reset</button>
-                     </a>
+                    <div class="btn-group">
+                    <a href="<?= BASE_URL_ADMIN .'?act=chi-tiet-khach-hang&id_khach_hang='. $khachHang['id']?>"><button class="btn btn-primary">Chi tiết</button></a>
+                        <a href="<?= BASE_URL_ADMIN .'?act=from-sua-khach-hang&id_khach_hang='. $khachHang['id']?>"><button class="btn btn-warning">Sửa</button></a>
+                        <a href="<?= BASE_URL_ADMIN .'?act=reset-password&id_quan_tri='. $khachHang['id']?>" onclick="return confirm('Bạn có muoonns reset password của tài khoản này không?')">
+                        <button class="btn btn-danger">Reset</button>
+                        </a>
+                    </div>
+                   
                    </td>
                   </tr>
                 <?php endforeach ?>
@@ -70,8 +86,12 @@
                         <tr>
                             <th>STT</th>
                             <th>Họ tên</th>
+                            <th>Ảnh đại diện</th>
                             <th>Email</th>
                             <th>Số điện thoại</th>
+                            <th>Ngày sinh</th>
+                            <!-- <th>Giới tính</th> -->
+                            <th>Địa chỉ</th>
                             <th>Trạng thái</th>
                             <th>Thao tác</th>
                         </tr>
