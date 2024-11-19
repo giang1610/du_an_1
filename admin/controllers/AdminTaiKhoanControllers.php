@@ -195,5 +195,12 @@ public function danhSachKhachHang(){
             }
         
         }
+        // public function detailKhachHang() {
+        //     $id_khach_hang=$_GET['id_khach_hang'];
+
+        //     $khachHang=$this->modelTaiKhoan->getDetailTaiKhoan($id_khach_hang);  
+        //     $listDonang=$this->modelDonhang->getDonHangFromKhachHang($id_khach_hang);
+        //     require_once './views/taikhoan/khachhang/detailKhachHang.php';
+        // }
         
     }

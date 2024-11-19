@@ -62,7 +62,7 @@ match ($act) {
 'list-tai-khoan-khach-hang'=>(new AdminTaiKhoanControllers())->danhSachKhachHang(),
 'from-sua-khach-hang' => (new AdminTaiKhoanControllers())->formEditKhachHang(),
 'sua-khach-hang' => (new AdminTaiKhoanControllers())->posteditKhachHang(),
-// 'chi-tiet-khach-hang'=>(new AdminTaiKhoanControllers())->detailKhachHang(),
+'chi-tiet-khach-hang'=>(new AdminTaiKhoanControllers())->detailKhachHang(),
 
 //quản lí tài khoản cá nhân
 };

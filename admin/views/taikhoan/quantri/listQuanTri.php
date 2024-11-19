@@ -58,9 +58,9 @@
                    <td><?= $khachHang['so_dien_thoai']  ?></td>
                    <td><?= $khachHang['trang_thai']==1 ? 'Active':'Inactive'  ?></td>
                    <td>
-                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-quan-tri&id_quan_tri='. $khachHang['id']?>"><button class="btn btn-warning">Sửa</button></a>
+                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-quan-tri&id_quan_tri='. $khachHang['id']?>"><button class="btn btn-warning"><i class="fa fa-wrench"></i></button></a>
                     <a href="<?= BASE_URL_ADMIN .'?act=reset-password&id_quan_tri='. $khachHang['id']?>" onclick="return confirm('Bạn có muoonns reset password của tài khoản này không?')">
-                     <button class="btn btn-danger">Reset</button>
+                     <button class="btn btn-danger"><i class="fa fa-recycle"></i></button>
                      </a>
                    </td>
                   </tr>
