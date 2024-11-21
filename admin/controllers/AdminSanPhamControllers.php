@@ -115,6 +115,24 @@ class AdminSanPhamControllers {
        
 
     }
+    public function detailSanPham() {
+     
+    
+        $id = $_GET['id_san-pham'];
+        $sanPham = $this->modelSanPham->getDetailSanPham($id);
+        // var_dump($sanPham);die;
+        $listAnhSanPham =$this->modelSanPham->getListAnhSanPham($id);
+        // var_dump($listAnhSanPham);die;
+        if($sanPham){
+            require_once "./views/sanpham/detailSanPham.php";
+            
+        }else{
+            header("location:".BASE_URL_ADMIN .'?act=san-pham');
+                exit();
+        }
+       
+
+    }
 
     public function posteditSanPham() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -233,19 +251,29 @@ class AdminSanPhamControllers {
     }
     
 
-    // public function deleteSanPham() {
-    //     $id = $_GET['id_danh_muc'];
+    public function deleteSanPham() {
+        $id = $_GET['id_san_pham'];
     
-    //     // Kiểm tra danh mục có tồn tại không trước khi xóa
-    //     $SanPham = $this->modelSanPham->getDetailSanPham($id);
+        // Kiểm tra danh mục có tồn tại không trước khi xóa
+        $sanPham = $this->modelSanPham->getDetailSanPham($id);
+        $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
+       
     
-    //     if ($SanPham) {
-    //         $this->modelSanPham->destroySanPham($id);
-    //     }
+        if ($sanPham) {
+            deleteFile($sanPham['hinh_anh']);
+            $this->modelSanPham->destroySanPham($id);
+            
+        }
+        if($listAnhSanPham) {
+            foreach($listAnhSanPham as $anhSP){
+                deleteFile($anhSP['link_hinh_anh']);
+                $this->modelSanPham->destroyAnhSanPham($anhSP['id']);
+            }
+        }
         
-    //     // Điều hướng sau khi xóa để cập nhật danh sách
-    //     header("location:" . BASE_URL_ADMIN . '?act=SanPham');
-    //     exit();
-    // }
+        // Điều hướng sau khi xóa để cập nhật danh sách
+        header("location:" . BASE_URL_ADMIN . '?act=san-pham');
+        exit();
+    }
     
 }
