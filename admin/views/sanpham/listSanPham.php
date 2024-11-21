@@ -68,9 +68,9 @@
                    <td><?= $sanPham['trang_thai'] == 1? 'Còn bán':'Dừng bán' ?></td>
                    
                    <td>
-                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-san-pham&id_san-pham='. $sanPham['id']?>"><button class="btn btn-warning">Sửa</button></a>
+                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-san-pham&id_san-pham='. $sanPham['id']?>"><button class="btn btn-warning"><i class="fa fa-wrench"></i></button></a>
                      <a href="<?= BASE_URL_ADMIN .'?act=xoa-san-pham&id_san-pham='. $sanPham['id']?>" onclick="return confirm('Bạn muốn xóa thật không?')">
-                     <button class="btn btn-danger">Xóa</button>
+                     <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                      </a>
                    </td>
                   </tr>

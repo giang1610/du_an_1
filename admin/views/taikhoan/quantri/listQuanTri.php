@@ -15,7 +15,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản lý danh sách đơn hàng</h1>
+            <h1>Quản lý tài khoản quản trị</h1>
           </div>
           
         </div>
@@ -31,58 +31,51 @@
 
             <div class="card">
               <div class="card-header">
-               
+               <a href="<?= BASE_URL_ADMIN .'?act=from-them-quan-tri'?>">
+                <button class="btn btn-success">Thêm tài khoản</button>
+               </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                  <th>STT</th>
-                   <th>Mã đơn hàng</th>
-                   <th>Tên người nhận</th>
-                   <th>Số điện thoại</th>
-                   <th>Ngày đặt</th>
-                   <th>Tổng tiền</th>
-                   <th>Trạng thái</th>
+                    <th>STT</th>
+                    <th>Họ tên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Trạng thái</th>
                     <th>Thao tác</th>                 
                   </tr>
                   </thead>
                   <tbody>
-                    <?php foreach($listDonHang as $key=> $donHang) :?>
+                    <?php foreach($listQuanTri as $key=> $khachHang) :?>
 
                   <tr>
-                   <td><?=$key+1?></td> 
-                   <td><?= $donHang['ma_don_hang']  ?></td>
-                   <td><?=  $donHang['ten_nguoi_nhan']  ?></td>
-                   <td><?=  $donHang['sdt_nguoi_nhan']  ?></td>
-                   <td><?=formatDate($donHang['ngay_dat'])?></td>
-                   <td><?=  $donHang['tong_tien']  ?></td>
-                   <td><?=  $donHang['ten_trang_thai']  ?></td>
-                   
+                   <td><?= $key+1 ?></td>
+                   <td><?= $khachHang['ho_ten']  ?></td>
+                   <td><?= $khachHang['email']  ?></td>
+                   <td><?= $khachHang['so_dien_thoai']  ?></td>
+                   <td><?= $khachHang['trang_thai']==1 ? 'Active':'Inactive'  ?></td>
                    <td>
-                    <div class="btn-group" style="display: flex;gap:5px;">
-                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-don-hang&id_don_hang='. $donHang['id']?>"><button class="btn btn-warning"><i class="fa fa-wrench"></i></button></a>
-                      
-                    <a href="<?= BASE_URL_ADMIN .'?act=chi-tiet-don-hang&id_don_hang='. $donHang['id']?>">
-                    <button class="btn btn-primary"><i class="fa fa-eye"></i></button></a>
-                    </div>
+                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-quan-tri&id_quan_tri='. $khachHang['id']?>"><button class="btn btn-warning"><i class="fa fa-wrench"></i></button></a>
+                    <a href="<?= BASE_URL_ADMIN .'?act=reset-password&id_quan_tri='. $khachHang['id']?>" onclick="return confirm('Bạn có muoonns reset password của tài khoản này không?')">
+                     <button class="btn btn-danger"><i class="fa fa-recycle"></i></button>
+                     </a>
                    </td>
                   </tr>
                 <?php endforeach ?>
                   </tbody>
-                  <tfoot>
-                  <tr>
-                   <th>STT</th>
-                   <th>Mã đơn hàng</th>
-                   <th>Tên người nhận</th>
-                   <th>Số điện thoại</th>
-                   <th>Ngày đặt</th>
-                   <th>Tổng tiền</th>
-                   <th>Trạng thái</th>
-                    <th>Thao tác</th>     
-                  </tr>
-                  </tfoot>
+                    <tfoot>
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->
