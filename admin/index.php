@@ -33,14 +33,15 @@ match ($act) {
     'from-sua-san-pham' => (new AdminSanPhamControllers())->formEditSanPham(),
     'sua-san-pham' => (new AdminSanPhamControllers())->posteditSanPham(), 
     'sua-album-anh-pham' => (new AdminSanPhamControllers())->posteditAnhSanPham(), 
+    'chi-tiet-san-pham' => (new AdminSanPhamControllers())->detailSanPham(),
 
-    // 'xoa-san-pham' => (new AdminSanPhamControllers())->deleteSanPham(),
+     'xoa-san-pham' => (new AdminSanPhamControllers())->deleteSanPham(),
    //route quản lí đơn hàng
    'don-hang' => (new AdminDonHangControllers())->danhSachDonHang(),
-   'from-sua-don-hang' => (new AdminDonHangControllers())->formEditDonHang(),
-   'sua-don-hang' => (new AdminDonHangControllers())->posteditDonHang(),
+//    'from-sua-don-hang' => (new AdminDonHangControllers())->formEditDonHang(),
+//    'sua-don-hang' => (new AdminDonHangControllers())->posteditDonHang(),
    'chi-tiet-don-hang' => (new AdminDonHangControllers())->detailDonHang(), 
-   'xoa-don-hang' => (new AdminDonHangControllers())->deleteDonHang(),
+//    'xoa-don-hang' => (new AdminDonHangControllers())->deleteDonHang(),
   
 };
 ?>
