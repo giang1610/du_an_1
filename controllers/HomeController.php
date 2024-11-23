@@ -10,13 +10,11 @@ class HomeController
     }
 
     public function home() {
+        $listSanPham = $this -> modelSanPham ->getAllSanPham();
         require_once './views/home.php';
     }
     public function trangchu() {
         echo "trangchu đây";
     }
-    public function dachsachsanpham() {
-        $listProduct = $this -> modelSanPham ->getAllProduct();
-        require_once './views/listProduct.php';
-    }
+   
 }

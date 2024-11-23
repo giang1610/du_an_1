@@ -1,24 +1,24 @@
 <?php
-class sanPham {
-    public $conn;
 
+class SanPham{
+    public $conn;
     public function __construct()
     {
         $this->conn = connectDB();
     }
 
-
-    public function getAllProduct() {
-        try {
+    public function getAllSanPham(){
+        try{
             $sql = 'SELECT * FROM san_phams';
+            
+           
+            
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
+            $stmt ->execute();
             return $stmt->fetchAll();
-
         }catch (Exception $e){
-            echo "lỗi" . $e->getMessage();
+            echo "lỗi" . $e ->getMessage();
         }
     }
 }
-
 ?>
