@@ -58,3 +58,7 @@ function uploadFileAlbum($file, $folderload,$key){
 function formatDate($date){
     return date("d-m-Y",strtotime($date));
 }
+
+function fomatPrice($price) {
+    return number_format($price, 0, ',', '.');
+}

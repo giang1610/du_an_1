@@ -120,9 +120,58 @@
                 </table>
                 </div>
             </div>
+            <div class="col-12">
+                <h2>Lịch sử bình luận</h2>
+                <div>
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                  <th>STT</th>
+                   <th>Sản Phẩm</th>
+                   <th>Nội dung</th>
+                   <th>Ngày bình luận</th>
+                   <th>Trạng thái</th>
+                    <th>Thao tác</th>                 
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach($listBinhLuan as $key=> $binhLuan) :?>
+
+                  <tr>
+                   <td><?=$key+1?></td> 
+                   <td><?= $binhLuan['ten_san_pham']  ?></td>
+                   <td><?= $binhLuan['noi_dung']  ?></td>
+                   <td><?= $binhLuan['ngay_dang']  ?></td>
+                   <td><?= $binhLuan['trang_thai'] == 1 ? 'Hiển thị' : 'Bị ẩn'  ?></td>
+                   
+                   
+                   <td>
+                    <!-- <div class="btn-group">
+                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-don-hang&id_don_hang='. $donHang['id']?>"><button class="btn btn-warning">Sửa</button></a>
+                    </div> -->
+                   </td>
+                  </tr>
+                <?php endforeach ?>
+                  </tbody>
+                  <!-- <tfoot>
+                  <tr>
+                   <th>STT</th>
+                   <th>Mã đơn hàng</th>
+                   <th>Tên người nhận</th>
+                   <th>Số điện thoại</th>
+                   <th>Ngày đặt</th>
+                   <th>Tổng tiền</th>
+                   <th>Trạng thái</th>
+                    <th>Thao tác</th>     
+                  </tr>
+                  </tfoot> -->
+                </table>
+                </div>
+            </div>
           </div>
           <!-- /.col -->
         </div>
+        
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->
@@ -134,6 +183,17 @@
 <?php include './views/layout/footer.php'; ?>
   <!-- endfooter -->
 <!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    });
+  });
+</script>
 
   
 
