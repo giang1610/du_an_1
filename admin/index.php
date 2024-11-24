@@ -31,6 +31,7 @@ match ($act) {
     'from-sua-danh-muc' => (new AdminDanhMucControllers())->formEditDanhMuc(),
     'sua-danh-muc' => (new AdminDanhMucControllers())->posteditDanhMuc(), 
     'xoa-danh-muc' => (new AdminDanhMucControllers())->deleteDanhMuc(),
+    // 'thong-ke' => (new AdminDanhMucControllers())->thongKe(),
    
     'san-pham' => (new AdminSanPhamControllers())->danhSachSanPham(),
     'from-them-san-pham' => (new AdminSanPhamControllers())->formAddSanPham(),
