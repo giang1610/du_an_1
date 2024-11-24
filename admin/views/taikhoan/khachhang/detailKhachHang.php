@@ -97,9 +97,9 @@
                    
                    <td>
                     <div class="btn-group">
-                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-don-hang&id_don_hang='. $donHang['id']?>"><button class="btn btn-warning">Sửa</button></a>
+                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-don-hang&id_don_hang='. $donHang['id']?>"><button class="btn btn-warning"><i class="fa fa-wrench"></i></button></a>
                     <a href="<?= BASE_URL_ADMIN .'?act=chi-tiet-don-hang&id_don_hang='. $donHang['id']?>">
-                    <button class="btn btn-primary">Chi tiết</button></a>
+                    <button class="btn btn-primary"><i class="fa fa-eye"></i></button></a>
                     </div>
                    </td>
                   </tr>
@@ -143,8 +143,6 @@
                    <td><?= $binhLuan['noi_dung']  ?></td>
                    <td><?= $binhLuan['ngay_dang']  ?></td>
                    <td><?= $binhLuan['trang_thai'] == 1 ? 'Hiển thị' : 'Bị ẩn'  ?></td>
-                   
-                   
                    <td>
                     <!-- <div class="btn-group">
                     <a href="<?= BASE_URL_ADMIN .'?act=from-sua-don-hang&id_don_hang='. $donHang['id']?>"><button class="btn btn-warning">Sửa</button></a>
