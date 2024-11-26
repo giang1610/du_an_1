@@ -37,7 +37,7 @@
                         <tbody style="font-size: x-large;">
                             <tr>
                                 <th>Họ tên:</th>
-                                <td><?=$khachHang['ho_ten']?></td>
+                                <td><?= $khachHang['ho_ten']?></td>
                             </tr>
                             <tr>
                                 <th>Ngày sinh:</th>
@@ -68,7 +68,7 @@
                     </div>
             </div>
             <div class="col-12">
-                <h2>Thông tin mua hàng</h2>
+                <h2>Lịch sử mua hàng</h2>
                 <div>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -139,14 +139,24 @@
 
                   <tr>
                    <td><?=$key+1?></td> 
-                   <td><?= $binhLuan['ten_san_pham']  ?></td>
+                   <td>
+                    <a target="_blank" href="<?= BASE_URL_ADMIN. '?act=chi-tiet-san-pham&id_san-pham=' .$binhLuan['san_pham_id']; ?>">
+                    <?= $binhLuan['ten_san_pham']  ?></a>
+                   </td>
                    <td><?= $binhLuan['noi_dung']  ?></td>
                    <td><?= $binhLuan['ngay_dang']  ?></td>
                    <td><?= $binhLuan['trang_thai'] == 1 ? 'Hiển thị' : 'Bị ẩn'  ?></td>
                    <td>
-                    <!-- <div class="btn-group">
-                    <a href="<?= BASE_URL_ADMIN .'?act=from-sua-don-hang&id_don_hang='. $donHang['id']?>"><button class="btn btn-warning">Sửa</button></a>
-                    </div> -->
+
+                    <form action="<?= BASE_URL_ADMIN .'?act=update-trang-thai-binh-luan' ?>" method="POST">
+                      <input type="hidden" name="id_binh_luan" value="<?= $binhLuan['id'] ?>">
+                      <input type="hidden" name="name_view" value="detail_khach">
+                      <input type="hidden" name="id_khach_hang" value="<?= $binhLuan['tai_khoan_id'] ?>">
+                      <button onclick="return confirm('Bạn có Chắc chắn không?')" class="btn btn-warning">
+                        <?= $binhLuan['trang_thai'] == 1 ? 'Ẩn': 'Bỏ ẩn' ?>
+                      </button>
+                      
+                    </form>
                    </td>
                   </tr>
                 <?php endforeach ?>
