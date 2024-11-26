@@ -4,6 +4,8 @@ session_start();
 require_once '../commons/env.php'; // Khai báo biến môi trường
 require_once '../commons/function.php'; // Hàm hỗ trợ
 
+
+
 // Require toàn bộ file Controllers
 require_once './controllers/AdminDanhMucControllers.php';
 require_once './controllers/AdminSanPhamControllers.php';
@@ -18,7 +20,9 @@ require_once './models/AdminDonHang.php';
 require_once './models/AdminTaiKhoan.php';
 // Route
 $act = strtolower($_GET['act'] ?? '/');
-
+if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin'){
+  checkLoginAdmin();
+}
 
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 match ($act) {
@@ -31,8 +35,11 @@ match ($act) {
     'from-sua-danh-muc' => (new AdminDanhMucControllers())->formEditDanhMuc(),
     'sua-danh-muc' => (new AdminDanhMucControllers())->posteditDanhMuc(), 
     'xoa-danh-muc' => (new AdminDanhMucControllers())->deleteDanhMuc(),
+
     // 'thong-ke' => (new AdminDanhMucControllers())->thongKe(),
    
+
+   //sanpham
     'san-pham' => (new AdminSanPhamControllers())->danhSachSanPham(),
     'from-them-san-pham' => (new AdminSanPhamControllers())->formAddSanPham(),
     'them-san-pham' => (new AdminSanPhamControllers())->postAddSanPham(),
@@ -40,8 +47,11 @@ match ($act) {
     'sua-san-pham' => (new AdminSanPhamControllers())->posteditSanPham(), 
     'sua-album-anh-pham' => (new AdminSanPhamControllers())->posteditAnhSanPham(), 
     'chi-tiet-san-pham' => (new AdminSanPhamControllers())->detailSanPham(),
-
      'xoa-san-pham' => (new AdminSanPhamControllers())->deleteSanPham(),
+
+     //route Bình luận
+     'update-trang-thai-binh-luan' => (new AdminSanPhamControllers())->updateTrangThaiBinhLuan(),
+
    //route quản lí đơn hàng
    'don-hang' => (new AdminDonHangControllers())->danhSachDonHang(),
    'from-sua-don-hang' => (new AdminDonHangControllers())->formEditDonHang(),
@@ -67,7 +77,17 @@ match ($act) {
 'sua-khach-hang' => (new AdminTaiKhoanControllers())->posteditKhachHang(),
 'chi-tiet-khach-hang'=>(new AdminTaiKhoanControllers())->detailKhachHang(),
 
-//quản lí tài khoản cá nhân
+//route quản lí tài khoản cá nhân(quản trị)
+'form-sua-thong-tin-ca-nhan-quan-tri'=>(new AdminTaiKhoanControllers())->formEditCaNhanQuanTri(),
+// 'sua-thong-tin-ca-nhan-quan-tri'=>(new AdminTaiKhoanControllers())->postEditCaNhanQuanTri(),
+'sua-mat-khau-ca-nhan-quan-tri'=>(new AdminTaiKhoanControllers())->postEditMatKhauCaNhan(),
+
+
+
+//route auth
+  'login-admin' => (new AdminTaiKhoanControllers())->formLogin(),
+  'check-login-admin' => (new AdminTaiKhoanControllers())->login(),
+  'logout-admin' => (new AdminTaiKhoanControllers())->logout(),
 
 };
 ?>
