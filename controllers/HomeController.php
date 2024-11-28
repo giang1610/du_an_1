@@ -118,8 +118,11 @@ class HomeController
             require_once './views/gioHang.php';
 
         }else{
-            var_dump("Chưa đăng nhập");die;
+            header("Location: " . BASE_URL . '?act=login');
         }
+    }
+    public function thanhToan(){
+        require_once './views/thanhToan.php';
     }
     }
 

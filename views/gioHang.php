@@ -42,15 +42,36 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($chiTietGioHang as $key=>$sanPham): ?>
+                                        <?php 
+                                        $tongGioHang = 0; 
+                                        foreach($chiTietGioHang as $key=>$sanPham): 
+                                              
+                                        ?>
                                         <tr>
                                             <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="Product" /></a></td>
-                                            <td class="pro-title"><a href="#">Diamond Exclusive Ornament</a></td>
-                                            <td class="pro-price"><span>$295.00</span></td>
-                                            <td class="pro-quantity">
-                                                <div class="pro-qty"><input type="text" value="1"></div>
+                                            <td class="pro-title"><a href="#"><?= $sanPham['ten_san_pham'] ?></a></td>
+                                            <td class="pro-price"></span>
+                                                <?php if($sanPham['gia_khuyen_mai']) { ?>
+                                                    <?= fomatPrice($sanPham['gia_khuyen_mai']) . ' đ' ?>
+                                                <?php } else{ ?>
+                                                    <?= fomatPrice($sanPham['gia_san_pham']) . ' đ' ?>
+                                                <?php } ?>
                                             </td>
-                                            <td class="pro-subtotal"><span>$295.00</span></td>
+                                            <td class="pro-quantity">
+                                                <div class="pro-qty"><input type="text" value="<?= $sanPham['so_luong'] ?>"></div>
+                                            </td>
+                                            <td class="pro-subtotal"><span>
+                                                <?php 
+                                                    $tongTien = 0;
+                                                    if($sanPham['gia_khuyen_mai']){
+                                                        $tongTien = $sanPham['gia_khuyen_mai'] * $sanPham['so_luong'];
+                                                    }else{
+                                                        $tongTien = $sanPham['gia_san_pham'] * $sanPham['so_luong'];
+                                                    }
+                                                    $tongGioHang += $tongTien;
+                                                    echo fomatPrice($tongTien) . ' đ';
+                                                ?>
+                                            </span></td>
                                             <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
                                         </tr>
                                         <?php endforeach ?>
@@ -76,25 +97,25 @@
                             <!-- Cart Calculation Area -->
                             <div class="cart-calculator-wrapper">
                                 <div class="cart-calculate-items">
-                                    <h6>Cart Totals</h6>
+                                    <h6>Tổng đơn hàng</h6>
                                     <div class="table-responsive">
                                         <table class="table">
                                             <tr>
-                                                <td>Sub Total</td>
-                                                <td>$230</td>
+                                                <td>Tổng tiền sản phẩm</td>
+                                                <td><?= fomatPrice($tongGioHang) . ' đ' ?></td>
                                             </tr>
                                             <tr>
-                                                <td>Shipping</td>
-                                                <td>$70</td>
+                                                <td>Vận chuyển</td>
+                                                <td>30.000 đ</td>
                                             </tr>
                                             <tr class="total">
-                                                <td>Total</td>
-                                                <td class="total-amount">$300</td>
+                                                <td>Tổng thanh toán</td>
+                                                <td class="total-amount"><?= fomatPrice($tongGioHang + 30000) . ' đ' ?></td>
                                             </tr>
                                         </table>
                                     </div>
                                 </div>
-                                <a href="checkout.html" class="btn btn-sqr d-block">Proceed Checkout</a>
+                                <a href="<?= BASE_URL . '?act=thanh-toan' ?>" class="btn btn-sqr d-block">Tiến hành đặt hàng</a>
                             </div>
                         </div>
                     </div>
