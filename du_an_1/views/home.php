@@ -1,5 +1,5 @@
-<?php require_once 'layout/header.php'; ?>
-<?php require_once 'layout/menu.php'; ?>
+<?php require_once 'views/layout/header.php'; ?>
+<?php require_once 'views/layout/menu.php'; ?>
 
    
 
@@ -2265,4 +2265,4 @@
     </main>
     <?php require_once 'views/layout/miniCart.php'; ?>
 
-   <?php require_once 'layout/fooder.php'; ?>
+   <?php require_once 'views/layout/fooder.php'; ?>
