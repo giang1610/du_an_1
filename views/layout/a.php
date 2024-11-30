@@ -1,34 +1,28 @@
- <!-- Start Header Area -->
- <header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<div class="container">
-				<a class="site-nav-toggler d-lg-none" data-toggle="collapse" href="#site-nav">
-					<i class="ion-navicon"></i>
-				</a>
-								<strong class="site-logo">
-					<a href="https://teddy.vn/" rel="home">
-						<img width="625" height="439" loading="lazy" src="https://teddy.vn/wp-content/uploads/2023/03/logo-add-01gg-e1680256236315.png" alt="Gấu Bông Teddy"/>
-						<span class="d-none d-md-block">Ôm Là Yêu</span>
-					</a>
-				</strong>
-								<div class="site-search">
-					<form class="form-search" action="" method="GET">
-	<input type="hidden" name="post_type" value="product"/>
-	<div class="input-group">
-		<input class="form-control typeahead" type="text" name="s" placeholder="Nhập sản phẩm cần tìm"/>
-		<span class="input-group-btn position-absolute" style="z-index: 10; top: 2px; right: 2px;">
-			<button class="btn border-0" type="submit" name="search"><i class="bi bi-search-heart"></i></i></button>
-		</span>
-	</div>
-</form>				</div>
-				<a class="d-none d-sm-flex align-items-center site-hotline text-primary font-weight-black" href="tel:0965555346">
-                <i class="bi bi-telephone-outbound-fill"></i>
-					096.5555.346				</a>
-			</div>
-            </div>
-		
-     <div class="aa">
-                          
+////////////////////////////////
+<!-- Start Header Area -->
+<header class="header-area header-wide">
+        <!-- main header start -->
+        <div class="main-header d-none d-lg-block">
+            
+
+            <!-- header middle area start -->
+            <div class="header-main-area sticky">
+                <div class="container">
+                    <div class="row align-items-center position-relative">
+
+                        <!-- start logo area -->
+                        <div class="col-lg-2">
+                            <div class="logo">
+                                <a href="<?= BASE_URL ?>">
+                                    <img src="assets/img/logo/LOGO1.png" alt="Brand Logo">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- start logo area -->
+
+                        <!-- main menu area start -->
+                        <div class="col-lg-6 position-static">
+                            <div class="main-menu-area">
                                 <div class="main-menu">
                                     <!-- main menu navbar start -->
                                     <nav class="desktop-menu">
@@ -49,14 +43,19 @@
                                     </nav>
                                     <!-- main menu navbar end -->
                                 </div>
-                          
-                        
-                      
-                       
+                            </div>
+                        </div>
+                        <!-- main menu area end -->
+
+                        <!-- mini cart area start -->
+                        <div class="col-lg-4">
                             <div class="header-right d-flex align-items-center justify-content-xl-between justify-content-lg-end">
                                 <div class="header-search-container">
-                                    <button class="search-trigger d-xl-none d-lg-block"><i class="bi bi-telephone-outbound-fill"></i></button>
-                                    
+                                    <button class="search-trigger d-xl-none d-lg-block"><i class="pe-7s-search"></i></button>
+                                    <form class="header-search-box d-lg-none d-xl-block">
+<input type="text" placeholder="Nhập tên sản phẩm" class="header-search-field">
+                                        <button class="header-search-btn"><i class="pe-7s-search"></i></button>
+                                    </form>
                                 </div>
                                 <div class="header-configure-area">
                                     <ul class="nav justify-content-end">
@@ -86,33 +85,18 @@
                                             </a>
                                         </li>
                                     </ul>
-                                
+                                </div>
+                            </div>
                         </div>
-                        </div>
+                        <!-- mini cart area end -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- header middle area end -->
+        </div>
+        <!-- main header start -->
+
         
     </header>
-
-    <link
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-  rel="stylesheet"
-/>
-
-
-<style>
-    .aa{
-        display: flex;
-        margin-left: 200px;
-        justify-content: space-between;
-    }
-    .header-configure-area{
-        margin-right: 200px;
-        margin-top: -30px;
-    }
-</style>
-
-
-    
-
-
-
-                        
+    <!-- end Header Area -->
