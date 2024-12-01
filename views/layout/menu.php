@@ -37,7 +37,7 @@
                                                 
                                             </li>
                                             
-                                            <li><a href="#">Sản phẩm <i class="fa fa-angle-down"></i></a>
+                                            <li><a href="<?= BASE_URL .'?act=danhsachsanpham'?>">Sản phẩm <i class="fa fa-angle-down"></i></a>
                                                 <ul class="dropdown">
                                                     <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
                                                     
@@ -73,8 +73,12 @@
                                             <ul class="dropdown-list">
                                             <?php if(!isset($_SESSION['user_client'])) { ?>
                                                 <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=Register' ?>">Đăng ký</a></li>
                                             <?php } else{ ?>
                                                 <li><a href="my-account.html">Tài khoản</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=lich-su-mua-hang'?>">Đơn hàng</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
+
                                              <?php } ?>
                                             </ul>
                                         </li>

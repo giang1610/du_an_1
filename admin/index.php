@@ -40,15 +40,14 @@ match ($act) {
    
 
    //sanpham
-    'san-pham' => (new AdminSanPhamControllers())->danhSachSanPham(),
-    'from-them-san-pham' => (new AdminSanPhamControllers())->formAddSanPham(),
-    'them-san-pham' => (new AdminSanPhamControllers())->postAddSanPham(),
-    'from-sua-san-pham' => (new AdminSanPhamControllers())->formEditSanPham(),
-    'sua-san-pham' => (new AdminSanPhamControllers())->posteditSanPham(), 
-    'sua-album-anh-pham' => (new AdminSanPhamControllers())->posteditAnhSanPham(), 
-    'chi-tiet-san-pham' => (new AdminSanPhamControllers())->detailSanPham(),
-     'xoa-san-pham' => (new AdminSanPhamControllers())->deleteSanPham(),
-
+    'san-pham'            => (new AdminSanPhamControllers())->danhSachSanPham(),
+    'from-them-san-pham'  => (new AdminSanPhamControllers())->formAddSanPham(),
+    'them-san-pham'       => (new AdminSanPhamControllers())->postAddSanPham(),
+    'from-sua-san-pham'   => (new AdminSanPhamControllers())->formEditSanPham(),
+    'sua-san-pham'        => (new AdminSanPhamControllers())->posteditSanPham(), 
+    'sua-album-anh-pham'  => (new AdminSanPhamControllers())->posteditAnhSanPham(), 
+    'chi-tiet-san-pham'   => (new AdminSanPhamControllers())->detailSanPham(),
+     'xoa-san-pham'       => (new AdminSanPhamControllers())->deleteSanPham(),
      //route Bình luận
      'update-trang-thai-binh-luan' => (new AdminSanPhamControllers())->updateTrangThaiBinhLuan(),
 

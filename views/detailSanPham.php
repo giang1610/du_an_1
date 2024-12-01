@@ -44,7 +44,7 @@
                                         <div class="pro-large-img img-zoom">
                                             <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="product-details" />
                                     <?php endforeach ?>
-                                        
+                                         
                                     </div>
                                 </div>
                                 <div class="col-lg-7">
