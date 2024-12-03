@@ -19,14 +19,8 @@
             </div>
         </div>
     </div>
-    <!-- breadcrumb area end -->
-    <div class="container">
-    <?php if (isset($_SESSION['success'])): ?>
-        <script>
-            alert("<?= $_SESSION['success'] ?>");
-        </script>
-        <?php unset($_SESSION['success']); // Xóa thông báo sau khi đã hiển thị ?>
-    <?php endif; ?>
+    <!-- Thông báo -->
+   
     <!-- login register wrapper start -->
     <div class="login-register-wrapper section-padding">
         <div class="container" style="max-width: 40vw;">
@@ -35,36 +29,24 @@
                     <!-- Login Content Start -->
                     <div class="col-lg-12">
                         <div class="login-reg-form-wrap">
-                            <h5 class="text-center">ĐĂNG NHẬP</h5>
-
-                            <!-- Hiển thị lỗi -->
-                            <?php if (isset($_SESSION['error'])): ?>
-                                <?php if (is_array($_SESSION['error'])): ?>
-                                    <?php foreach ($_SESSION['error'] as $error): ?>
-                                        <p class="text-danger login-box-msg text-center"><?= htmlspecialchars($error) ?></p>
-                                    <?php endforeach; ?>
-                                <?php else: ?>
-                                    <p class="text-danger login-box-msg text-center"><?= htmlspecialchars($_SESSION['error']) ?></p>
-                                <?php endif; ?>
-                            <?php else: ?>
-                                <p class="login-box-msg text-center">Vui lòng đăng nhập</p>
-                            <?php endif; ?>
-
-                            <form method="post" action="<?= BASE_URL . '?act=check-login' ?>" >
+                            <h5 class="text-center">ĐĂNG KÝ</h5>
+                            <form method="post" action="<?= BASE_URL . '?act=them-Register' ?>" >
                                 <div class="single-input-item">
-                                    <input type="email" placeholder="Email or Username" name="email" required />
+                                <label >Họ tên</label>
+                                            <input type="text" class="form-control"  name="ho_ten" placeholder="Nhập tên ">
+                                            <?php if(isset($_SESSION['error']['ho_ten'])) {?>
+                                                <p class="text-danger"><?= $_SESSION['error']['ho_ten'] ?></p>
+                                            <?php  }?>
                                 </div>
                                 <div class="single-input-item">
-                                    <input type="password" placeholder="Enter your Password" name="password" required />
+                                <label >Email</label>
+                                            <input type="email" class="form-control"  name="email" placeholder="Nhập email ">
+                                            <?php if(isset($_SESSION['error']['email'])) {?>
+                                                <p class="text-danger"><?= $_SESSION['error']['email'] ?></p>
+                                            <?php  }?>
                                 </div>
                                 <div class="single-input-item">
-                                    <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-                                        <a href="#" class="forget-pwd">Quên mật khẩu?</a>
-                                    </div>
-                                </div>
-                                <div class="single-input-item">
-                                    <button class="btn btn-sqr" type="submit">Đăng Nhập</button>
-                                    <p>Bạn không có tài khoản?<a href="<?= BASE_URL .'?act=Register'?>">Đăng kí</a></p>
+                                    <button class="btn btn-sqr" type="submit">Đăng ký</button>
                                 </div>
                             </form>
                         </div>

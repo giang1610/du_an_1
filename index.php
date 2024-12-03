@@ -15,6 +15,13 @@ require_once './models/sanPham.php';
 require_once './models/TaiKhoan.php';
 require_once './models/GioHang.php';
 
+// if($_SERVER['REQUEST_METHOD' ] == 'POST') {
+//     echo '<pre>';
+//         print_r($_POST);
+//         die();
+// }
+
+
 // Route
 $act = $_GET['act'] ?? '/';
 // var_dump($_GET['act']);die();
@@ -25,15 +32,20 @@ match ($act) {
     // Trang chủ
     '/'                 => (new HomeController())->home(),
     // 'trangchu'                 => (new HomeController())->trangchu(),
-    // 'danhsachsanpham'                 => (new HomeController())->dachsachsanpham(),
-    'chi-tiet-san-pham' => (new HomeController())-> chiTietSanPham(),
-    'them-gio-hang' => (new HomeController())->addGioHang(),
-    'gio-hang' => (new HomeController())->gioHang(),
+    'danhsachsanpham'                        => (new HomeController())->dachsachsanpham($kyw = ""),
+    'chi-tiet-san-pham'                      => (new HomeController())-> chiTietSanPham(),
+    'them-gio-hang'                           => (new HomeController())->addGioHang(),
+    'gio-hang'                                  => (new HomeController())->gioHang(),
     'thanh-toan' => (new HomeController())->thanhToan(),
+    'chi-tiet-mua-hang'  => (new HomeController())->chiTietMuaHang(),
+    'lich-su-mua-hang'  => (new HomeController())->lichSuMuaHang(),
+    'huy-don-hang'       => (new HomeController())->huyDonHang(),
 
     // Auth
+    'Register' => (new HomeController())->formRegister(),
+    'them-Register' => (new HomeController())->postRegister(),
     'login' => (new HomeController())->formLogin(),
     'check-login' => (new HomeController())->postLogin(),
-    
+    'logout' => (new HomeController())->logout(),
 
 };
