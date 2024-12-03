@@ -6,7 +6,7 @@
 					<i class="ion-navicon"></i>
 				</a>
 								<strong class="site-logo">
-					<a href="https://teddy.vn/" rel="home">
+					<a href="<?= BASE_URL ?>" rel="home">
 						<img width="625" height="439" loading="lazy" src="https://teddy.vn/wp-content/uploads/2023/03/logo-add-01gg-e1680256236315.png" alt="Gấu Bông Teddy"/>
 						<span class="d-none d-md-block">Ôm Là Yêu</span>
 					</a>
@@ -37,14 +37,11 @@
                                                 
                                             </li>
                                             
-                                            <li><a href="<?= BASE_URL .'?act=danhsachsanpham'?>">Sản phẩm <i class="fa fa-angle-down"></i></a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-                                                    
-                                                </ul>
+                                            <li><a href="#">Sản phẩm <i class="fa fa-angle-down"></i></a>
+                                                
                                             </li>
-                                            <li><a href="#">Giới thiệu</a></li>
-                                            <li><a href="#">Liên hệ</a></li>
+                                            <li><a href="<?= BASE_URL . '/views/gioiThieu.php' ?>">Giới thiệu</a></li>
+                                            <li><a href="<?= BASE_URL . '/views/lienHe.php' ?>">Liên hệ</a></li>
                                         </ul>
                                     </nav>
                                     <!-- main menu navbar end -->

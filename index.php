@@ -48,5 +48,4 @@ match ($act) {
     'check-login' => (new HomeController())->postLogin(),
     'logout' => (new HomeController())->logout(),
 
-
 };
