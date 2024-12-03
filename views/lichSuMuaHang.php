@@ -52,10 +52,10 @@
                                                 <td><?=$arrPhuongThucThanhToan[$donHang['phuong_thuc_thanh_toan_id']]?></td>
                                                 <td><?=$arrTrangThaiDonHang[$donHang['trang_thai_id']]?></td>
                                                 <td>
-                                                    <?php if($donHang['trang_thai_id'] == 1) : ?>
-                                                        <a href="<?=BASE_URL ?>?act=huy-don-hang&id=<?=$donHang['id']?>" class="btn btn-sqr"
+                                                   <?php if($donHang['trang_thai_id'] == 1) : ?>
+                                                        <a href="<?=BASE_URL ?>?act=huy-don-hang&id=<?=$donHang['id']?>" class="btn btn-dark" 
                                                         onclick="return confirm('Xác nhận hủy đơn hàng')">
-                                                            Hủy
+                                                           Hủy
                                                         </a>
                                                     <?php endif; ?>
                                                 </td>
