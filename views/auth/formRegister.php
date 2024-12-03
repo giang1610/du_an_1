@@ -46,7 +46,7 @@
                                             <?php  }?>
                                 </div>
                                 <div class="single-input-item">
-                                    <button class="btn btn-sqr" type="submit">Đăng ký</button>
+                                    <button class="btn btn-dark" type="submit">Đăng ký</button>
                                 </div>
                             </form>
                         </div>

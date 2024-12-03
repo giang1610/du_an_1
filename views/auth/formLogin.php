@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 <div class="single-input-item">
-                                    <button class="btn btn-sqr" type="submit">Đăng Nhập</button>
+                                    <button class="btn btn-dark" type="submit">Đăng Nhập</button>
                                     <p>Bạn không có tài khoản?<a href="<?= BASE_URL .'?act=Register'?>">Đăng kí</a></p>
                                 </div>
                             </form>

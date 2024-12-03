@@ -18,6 +18,7 @@ class HomeController
        $this-> modelSanPham = new sanPham();
        $this-> modelTaiKhoan = new taiKhoan();
        $this-> modelGioHang = new GioHang();
+       $this->modelDonHang = new DonHang();
        $this->conn = connectDB();
        if (!$this->conn) {
         die("Kết nối cơ sở dữ liệu thất bại.");
@@ -50,25 +51,7 @@ class HomeController
     }
     
     
-    public function dachsachsanpham($kyw = "") {
-        try {
-            $sql = "SELECT * FROM san_phams WHERE 1";
-            if ($kyw != "") {
-                $sql .= " AND ten_san_pham LIKE :ten_san_pham"; // Sử dụng placeholder
-            }
-            $sql .= " ORDER BY id DESC";
-    
-            $stmt = $this->conn->prepare($sql);
-            if ($kyw != "") {
-                $stmt->bindValue(':ten_san_pham', '%' . $kyw . '%'); // Ràng buộc giá trị cho placeholder
-            }
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC); // Đảm bảo trả về mảng kết hợp
-        } catch (Exception $e) {
-            echo "Lỗi: " . $e->getMessage();
-        }
-    }
-    
+   
     public function formRegister() {
 
         require_once "./views/auth/formRegister.php";
@@ -219,7 +202,85 @@ class HomeController
         }
     }
     public function thanhToan(){
-        require_once './views/thanhToan.php';
+        if(isset($_SESSION['user_client'])){
+            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
+            // Lấy dữ liệu giỏ hàng của người dùng
+            // var_dump($mail['id']);die;
+            $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
+            if(!$gioHang){
+                $gioHangId = $this->modelGioHang->addGioHang($user['id']);
+                $gioHang = ['id'=>$gioHangId];
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+            }else{
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+            }
+
+            require_once './views/thanhToan.php';
+
+        }else{
+            var_dump('Chưa đăng nhập');die;
+        }
+
+    }
+    public function postThanhToan(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            
+            $ten_nguoi_nhan = $_POST['ten_nguoi_nhan'];
+            $email_nguoi_nhan = $_POST['email_nguoi_nhan'];
+            $sdt_nguoi_nhan = $_POST['sdt_nguoi_nhan'];
+            $dia_chi_nguoi_nhan = $_POST['dia_chi_nguoi_nhan'];
+            $ghi_chu = $_POST['ghi_chu'];
+            $tong_tien = $_POST['tong_tien'];
+            $phuong_thuc_thanh_toan_id = $_POST['phuong_thuc_thanh_toan_id'];
+
+            $ngay_dat = date('Y-m-d');
+            $trang_thai_id = 1;
+
+            $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
+            $tai_khoan_id = $user['id'];
+
+            $ma_don_hang = 'DH' . rand(1000, 9999);
+
+            // Thêm thông tin vào db
+
+            $donHang = $this->modelDonHang->addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $ma_don_hang, $trang_thai_id);
+            // Lấy thông tin giỏ hàng của người dùng
+            $gioHang = $this->modelGioHang->getGioHangFromUser($tai_khoan_id);
+
+            // Lưu sản phẩm vào chi tiết đơn hàng
+            if($donHang){
+                // Lấy ra toàn bộ sản phẩm trong giỏ hàng
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+                
+                // Thêm từng sản phẩmtừ giỏ hàng vào bảng chi tiết đơn hàng
+                foreach($chiTietGioHang as $item){
+                    $donGia = $item['gia_khuyen_mai'] ?? $item['gia_san_pham']; // Ưu tiên đơn giá sẽ lấy giá khuyến mãi
+
+                    $this->modelDonHang->addChiTietDonHang(
+                        $donHang, // ID đơn hàng vừa tạo
+                        $item['san_pham_id'], // ID sản phẩm
+                        $donGia, // Đơn giá lấy từ sản phẩm
+                        $item['so_luong'], // Số lượng
+                        $donGia * $item['so_luong'] // Thành tiền
+                    );
+                }
+
+                // Sau khi thêm xong thì phải tiến hành xóa sản phẩm trong giỏ hàng
+                // Xóa toàn bộ sản phẩm trong chi tiết gior hàng
+                $this->modelGioHang->clearDetailGioHang($gioHang['id']);
+
+                // Xóa thông tin giỏ hàng người dùng
+                $this->modelGioHang->clearGioHang($tai_khoan_id);
+
+                // Chuyển hướng về trang lịch sử mua hàng
+                header("Location: " . BASE_URL . '?act=lich-su-mua-hang');
+                exit;
+
+            }else{
+                var_dump('Lỗi đặt hàng. VUi lòng thử lại sau');
+                die;
+            }
+        }
     }
     public function lichSuMuaHang(){
         if(isset($_SESSION['user_client'])){
