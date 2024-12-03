@@ -303,21 +303,50 @@ class HomeController
     }
 }
     public function chiTietMuaHang(){
+
+        if(isset($_SESSION['user_client'])){
+            $user=$this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
+            $tai_khoan_id=$user['id'];
+    //Lấy ra id đơn hàng   
+        $donHangId=$_GET['id'];
+    //DS trạng thái đơn hàng
+         $arrTrangThaiDonHang=$this->modelDonHang->getTrangThaiDonHang();
+         $arrTrangThaiDonHang=array_column($arrTrangThaiDonHang,'ten_trang_thai','id');
+         // var_dump($arrTrangThaiDonHang);die
+    //DS phương thức thanh toán
+     $arrPhuongThucThanhToan=$this->modelDonHang->getPhuongThucThanhToan();
+     $arrPhuongThucThanhToan=array_column($arrPhuongThucThanhToan,'ten_phuong_thuc','id');
+    //Lấy thông tin đơn hàng
+        $donHangId=$_GET['id'];
+       $donHang =$this->modelDonHang->getDonHangById($donHangId);
+    //Lấy thông tin sản phẩm
+    $ChiTietDonHang=$this->modelDonHang->getChiTietDonHangByDonHangId($donHangId);
+
+
+    if($donHang['tai_khoan_id'] !=$tai_khoan_id){
+        echo"Bạn không có quyền truy cập";
+        exit;
+    }
+    require_once "./views/chiTietMuaHang.php";
+    }else{
+        var_dump('Bạn chưa đăng nhập!Vui lòng đăng nhập đẻ tiếp tục');
+    }
+        
+
     }
     public function huyDonHang(){
         if(isset($_SESSION['user_client'])){
-                $this->modelDonHang = new DonHang();
                 $user=$this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
                 $tai_khoan_id=$user['id'];
         //Lấy ra id đơn hàng   
             $donHangId=$_GET['id'];
-            //Kiểm tra có đơn hàng không
+        //Kiểm tra có đơn hàng không
             $donHang=$this->modelDonHang->getDonHangById($donHangId);
-            if($donHang['tai_khoan_id'] != 1){
-                echo"Bạn không có quền hủy đơn hàng này";
+            if($donHang['tai_khoan_id'] != $tai_khoan_id){
+                echo"Bạn không có quyền hủy đơn hàng này";
                 exit;
             }
-            if($donHang['trang_thai_id'] != $tai_khoan_id){
+            if($donHang['trang_thai_id'] != 1){
                 echo"Đơn hàng ở trạng thái 'Chưa xác nhận' mới hủy được";
                 exit;
             }
