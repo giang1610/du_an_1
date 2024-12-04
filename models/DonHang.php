@@ -109,5 +109,24 @@ public function addChiTietDonHang($donHangId, $sanPhamId, $donGia, $soLuong, $th
     }
 
 }
+public function getChiTietDonHangByDonHangId($donHangId){
+    
+    try{
+    $sql = 'SELECT 
+    chi_tiet_don_hangs .*,
+    san_phams.ten_san_pham,
+    san_phams.hinh_anh
+    FROM 
+    chi_tiet_don_hangs 
+    JOIN
+    san_phams ON chi_tiet_don_hangs.san_pham_id = san_phams.id
+    WHERE 
+    chi_tiet_don_hangs.don_hang_id=:donHangId';
+    $stmt = $this->conn ->prepare($sql);
+    $stmt->execute([':donHangId'=>$donHangId]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}catch (Exception $e){
+    echo "Lỗi" . $e->getMessage();
 }
-?>
+}
+}
