@@ -185,7 +185,9 @@
                                                 </div>
                                                 
                                                 <div class="cart-hover">
-                                                    <button class="btn btn-cart">Xem chi tiết</button>
+                                                
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' .$sanPham['id']; ?>"><button class="btn btn-cart">Xem chi tiết</button></a>
+                                                   
                                                 </div>
                                             </figure>
                                             <div class="product-caption text-center">
@@ -580,7 +582,7 @@
                                             </div>
                                         </div>
                                         <!-- product item end -->
-
+                                                        
                                         <!-- product item start -->
                                         <div class="product-item">
                                             <figure class="product-thumb">

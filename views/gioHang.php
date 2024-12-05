@@ -30,7 +30,7 @@
                         <div class="col-lg-12">
                             <!-- Cart Table Area -->
                             <div class="cart-table table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered text-center">
                                     <thead>
                                         <tr>
                                             <th class="pro-thumbnail">Ảnh sản phẩm</th>
@@ -83,11 +83,11 @@
                                 <div class="apply-coupon-wrapper">
                                     <form action="#" method="post" class=" d-block d-md-flex">
                                         <input type="text" placeholder="Enter Your Coupon Code" required />
-                                        <button class="btn btn-sqr">Apply Coupon</button>
+                                        <button class="btn btn-success">Mã giảm giá</button>
                                     </form>
                                 </div>
                                 <div class="cart-update">
-                                    <a href="#" class="btn btn-sqr">Update Cart</a>
+                                    <a href="#" class="btn btn-success">Cập nhập giỏ hàng</a>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <a href="<?= BASE_URL . '?act=thanh-toan' ?>" class="btn btn-sqr d-block">Tiến hành đặt hàng</a>
+                                <a href="<?= BASE_URL . '?act=thanh-toan' ?>" class="btn btn-info">Tiến hành đặt hàng</a>
                             </div>
                         </div>
                     </div>

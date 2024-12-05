@@ -12,6 +12,7 @@ class AdminDonHangControllers {
         // echo 'trang danh muc';
         $listDonHang = $this->modelDonHang->getAllDonHang();
         require_once "./views/donhang/listDonHang.php";
+      
     }
     public function detailDonHang() {
         $don_hang_id=$_GET['id_don_hang'];

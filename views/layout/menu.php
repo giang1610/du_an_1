@@ -3,7 +3,7 @@
 		<div class="site-branding">
 			<div class="container">
 				<a class="site-nav-toggler d-lg-none" data-toggle="collapse" href="#site-nav">
-					<i class="ion-navicon"></i>
+					
 				</a>
 								<strong class="site-logo">
 					<a href="<?= BASE_URL ?>" rel="home">
@@ -12,12 +12,12 @@
 					</a>
 				</strong>
 								<div class="site-search">
-					<form class="form-search" action="" method="GET">
+<form class="form-search" action="imdex.php?act=sanPham" method="GET">
 	<input type="hidden" name="post_type" value="product"/>
 	<div class="input-group">
-		<input class="form-control typeahead" type="text" name="s" placeholder="Nhập sản phẩm cần tìm"/>
+		<input class="form-control typeahead" type="text" name="kyw" placeholder="Nhập sản phẩm cần tìm"/>
 		<span class="input-group-btn position-absolute" style="z-index: 10; top: 2px; right: 2px;">
-			<button class="btn border-0" type="submit" name="search"><i class="bi bi-search-heart"></i></i></button>
+			<button class="btn border-0" type="submit" name="timKiem" ><i class="bi bi-search-heart"></i></i></button>
 		</span>
 	</div>
 </form>				</div>
@@ -37,7 +37,7 @@
                                                 
                                             </li>
                                             
-                                            <li><a href="#">Sản phẩm </a>
+                                            <li><a href="#">Sản phẩm <i class="fa fa-angle-down"></i></a>
                                                 
                                             </li>
                                             <li><a href="<?= BASE_URL . '/views/gioiThieu.php' ?>">Giới thiệu</a></li>
@@ -52,7 +52,7 @@
                        
                             <div class="header-right d-flex align-items-center justify-content-xl-between justify-content-lg-end">
                                 <div class="header-search-container">
-                                    <button class="search-trigger d-xl-none d-lg-block"><i class="bi bi-telephone-outbound-fill"></i></button>
+                                    <button class="search-trigger d-xl-none d-lg-block"></button>
                                     
                                 </div>
                                 <div class="header-configure-area">
@@ -70,8 +70,12 @@
                                             <ul class="dropdown-list">
                                             <?php if(!isset($_SESSION['user_client'])) { ?>
                                                 <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=Register' ?>">Đăng ký</a></li>
                                             <?php } else{ ?>
                                                 <li><a href="my-account.html">Tài khoản</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=lich-su-mua-hang'?>">Đơn hàng</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
+
                                              <?php } ?>
                                             </ul>
                                         </li>
