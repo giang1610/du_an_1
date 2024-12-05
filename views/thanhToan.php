@@ -173,7 +173,7 @@
                                             <input type="checkbox" class="custom-control-input" id="terms" required />
                                             <label class="custom-control-label" for="terms">Xác nhận đặt hàng</label>
                                         </div>
-                                        <button type="submit" class="btn btn-sqr">Tiến hành đặt hàng</button>
+                                        <button type="submit" class="btn btn-success">Tiến hành đặt hàng</button>
                                     </div>
                                 </div>
                                 

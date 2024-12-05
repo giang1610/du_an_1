@@ -53,7 +53,7 @@
                                             <td><?= number_format($item['don_gia'],0,',','.')?>đ</td>
                                             <td><?= $item['so_luong']?></td>
                                             <td> <?=number_format($item['thanh_tien'],0,',','.')?>đ</td>
-                                       </tr>
+</tr>
                                        
                                        <?php endforeach ?>
                                     </tbody>
@@ -89,7 +89,7 @@
                                        </tr>
                                        <tr>
                                         <th>Ngày đặt:</th>
-                                        <td><?= $donHang['ngay_dat']?></td>
+                                        <td><?=formatDate($donHang['ngay_dat'])?></td>
                                        </tr>
                                        <tr>
                                         <th>Ghi chú:</th>
@@ -105,7 +105,7 @@
                                        </tr>
                                        <tr>
                                         <th>Trạng thái đơn hàng</th>
-                                        <td><?=$arrTrangThaiDonHang[$donHang['trang_thai_id']]?></td>
+<td><?=$arrTrangThaiDonHang[$donHang['trang_thai_id']]?></td>
                                        </tr>
                                        
                                     </tbody>
