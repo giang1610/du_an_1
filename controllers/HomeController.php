@@ -19,6 +19,7 @@ class HomeController
        $this-> modelTaiKhoan = new taiKhoan();
        $this-> modelGioHang = new GioHang();
        $this->modelDonHang = new DonHang();
+       $this->modelBinhluan =new BinhLuan
        $this->conn = connectDB();
        if (!$this->conn) {
         die("Kết nối cơ sở dữ liệu thất bại.");
@@ -177,7 +178,7 @@ class HomeController
             }
             header("Location:" . BASE_URL . '?act=gio-hang');
         }else{
-            var_dump("Chưa đăng nhập");die;
+            header("Location:" . BASE_URL . '?act=login');
         }
     }
 }
@@ -359,6 +360,34 @@ class HomeController
             var_dump('Bạn chưa đăng nhập!Vui lòng đăng nhập đẻ tiếp tục');
         }
     }
+    public function deleteBinhLuan() {
+        $id = $_GET['id_danh_muc'];
+    
+        // Kiểm tra danh mục có tồn tại không trước khi xóa
+        $danhMuc = $this->modelBinhluan->getDetailBinhLuan($id);
+    
+        if ($danhMuc) {
+            $this->modelDanhMuc->destroyBinhluan($id);
+        }
+        
+        // Điều hướng sau khi xóa để cập nhật danh sách
+        header("location:" . BASE_URL_ADMIN . '?act=danhmuc');
+        exit();
+    }
+    public function danhSachBinhLuan() {
+        
+        // echo 'trang danh muc';
+        $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
+        require_once "./views/danhmuc/listDanhMuc.php";
+    }
+
+    public function formAddDanhMuc() {
+
+        require_once "./views/danhmuc/addDanhMuc.php";
+
+        deleteSessionError();
+    }
+
 }
         
     
