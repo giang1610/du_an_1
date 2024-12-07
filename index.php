@@ -43,8 +43,7 @@ match ($act) {
     'lich-su-mua-hang'                       => (new HomeController())->lichSuMuaHang(),
     'huy-don-hang'                           => (new HomeController())->huyDonHang(),
     //Bình luận
-    'binh-luan' =>(new HomeController())->danhSachBinhLuan(),
-    'xoa-binh-luan' =>(new HomeController())->deleteBinhLuan(),
+    'add-binh-luan' => (new HomeController())->addBinhLuan(),
     // Auth
     'Register' => (new HomeController())->formRegister(),
     'them-Register' => (new HomeController())->postRegister(),
