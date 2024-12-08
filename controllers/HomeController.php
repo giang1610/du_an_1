@@ -9,16 +9,21 @@ class HomeController
     public $modelTaiKhoan;
     public $modelGioHang;
     public $modelDonHang;
+    public $modelBinhLuan;
     public $conn;
 
 
     public function __construct()
+   
+
     
     {
        $this-> modelSanPham = new sanPham();
        $this-> modelTaiKhoan = new taiKhoan();
        $this-> modelGioHang = new GioHang();
        $this->modelDonHang = new DonHang();
+       $this->modelBinhLuan = new BinhLuan();
+    //    $this->modelBinhluan =new BinhLuan
        $this->conn = connectDB();
        if (!$this->conn) {
         die("Kết nối cơ sở dữ liệu thất bại.");
@@ -177,7 +182,7 @@ class HomeController
             }
             header("Location:" . BASE_URL . '?act=gio-hang');
         }else{
-            var_dump("Chưa đăng nhập");die;
+            header("Location:" . BASE_URL . '?act=login');
         }
     }
 }
@@ -359,6 +364,36 @@ class HomeController
             var_dump('Bạn chưa đăng nhập!Vui lòng đăng nhập đẻ tiếp tục');
         }
     }
+    public function formAddDanhMuc() {
+
+        require_once "./views/danhmuc/addDanhMuc.php";
+
+        deleteSessionError();
+    }
+    public function addBinhLuan() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_SESSION['user_client'])) {
+                $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_client']);
+                $taiKhoanId = $user['id'];
+                $sanPhamId = $_POST['san_pham_id'];
+                $noiDung = $_POST['noi_dung'];
+    
+                if (!empty($noiDung)) {
+                    $this->modelBinhLuan->addBinhLuan($sanPhamId, $taiKhoanId, $noiDung);
+                    $_SESSION['success'] = "Thêm bình luận thành công!";
+                } else {
+                    $_SESSION['error'] = "Nội dung bình luận không được để trống.";
+                }
+                header("Location: " . BASE_URL . "?act=chi-tiet-san-pham&id_san_pham=" . $sanPhamId);
+            } else {
+                $_SESSION['error'] = "Bạn cần đăng nhập để bình luận.";
+                header("Location: " . BASE_URL . "?act=login");
+            }
+            exit();
+        }
+    }
+    
+
 }
         
     

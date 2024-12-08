@@ -20,7 +20,7 @@
               <?php
 
 
-$connect = new mysqli('localhost','xuangiang','xuangiang','duan1cc');
+$connect = new mysqli('localhost','root','','duan1');
   
         $sql = 'SELECT danh_mucs.ten_danh_muc, COUNT(san_phams.id) AS so_luong_san_pham
         FROM san_phams
