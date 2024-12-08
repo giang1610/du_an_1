@@ -99,14 +99,14 @@ h4{
         <div class="row mt-4">
           <nav class="w-100">
             <div class="nav nav-tabs" id="product-tab" role="tablist">
-              <a class="tab-content" id="product-desc-tab" data-toggle="tab" href="#binh-luan" role="tab" aria-controls="product-desc" aria-selected="true">Bình luận về <?=$sanPham['ten_san_pham'] ?></a>
+              <!-- <a class="tab-content" id="product-desc-tab" data-toggle="tab" href="#binh-luan" role="tab" aria-controls="product-desc" aria-selected="true">Bình luận về <?=$sanPham['ten_san_pham'] ?></a> -->
              
             </div>
           </nav>
           <div class="tab-content p-3" id="nav-tabContent">
             <div class="tab-pane fade show active" id="binh-luan" role="tabpanel" aria-labelledby="product-desc-tab">
               <div class="container">
-              <table class="table table-striped table-hover">
+              <!-- <table class="table table-striped table-hover">
               
               <thead>
               <tr>
@@ -133,7 +133,7 @@ h4{
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
               </div>
               
             </div>
