@@ -34,14 +34,14 @@
                             <div class="col-lg-5">
                                 <div class="product-large-slider">
                                     <?php foreach ($listAnhSanPham as $key => $anhSanPham): ?>
-                                    <div class="pro-large-img img-zoom">
+                                    <div class="pro-large-img ">
                                         <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="product-details" />
                                     </div>
                                     <?php endforeach; ?>
                                 </div>
                                 <div class="pro-nav slick-row-10 slick-arrow-style">
                                     <?php foreach ($listAnhSanPham as $key => $anhSanPham): ?>
-                                    <div class="pro-large-img img-zoom">
+                                    <div class="pro-large-img ">
                                         <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="product-details" />
                                     </div>
                                     <?php endforeach; ?>

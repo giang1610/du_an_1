@@ -105,7 +105,7 @@
                                        </tr>
                                        <tr>
                                         <th>Trạng thái đơn hàng</th>
-<td><?=$arrTrangThaiDonHang[$donHang['trang_thai_id']]?></td>
+                                        <td><?=$arrTrangThaiDonHang[$donHang['trang_thai_id']]?></td>
                                        </tr>
                                        
                                     </tbody>
