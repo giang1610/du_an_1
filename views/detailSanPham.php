@@ -11,7 +11,7 @@
                         <nav aria-label="breadcrumb">
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?= BASE_URL ?>"><i class="fa fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="shop.html">Sản phẩm</a></li>
+                                <li class="breadcrumb-item"><a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc' ?>">Sản phẩm</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm</li>
                             </ul>
                         </nav>
@@ -46,7 +46,11 @@
                                     </div>
                                     <?php endforeach; ?>
                                 </div>
+   
+                                
                             </div>
+
+                            
                             <div class="col-lg-7">
                                 <div class="product-details-des">
                                     <div class="manufacturer-name">
@@ -198,9 +202,11 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <?php endforeach; ?>
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>

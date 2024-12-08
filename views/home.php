@@ -107,11 +107,7 @@
                             <a href="#">
                                 <img src="assets/img/slider/banner1.jpg" alt="product banner">
                             </a>
-                            <div class="banner-content text-right">
-                                <h5 class="banner-text1">BEAUTIFUL</h5>
-                                <h2 class="banner-text2">Wedding<span>Rings</span></h2>
-                                <a href="shop.html" class="btn btn-text">Shop Now</a>
-                            </div>
+                            
                         </figure>
                     </div>
                     <div class="col-sm-6">
@@ -119,11 +115,7 @@
                             <a href="#">
                                 <img src="assets/img/slider/banner2.jpg" alt="product banner">
                             </a>
-                            <div class="banner-content text-right">
-                                <h5 class="banner-text1">BEAUTIFUL</h5>
-                                <h2 class="banner-text2">Wedding<span>Rings</span></h2>
-                                <a href="shop.html" class="btn btn-text">Shop Now</a>
-                            </div>
+                            
                         </figure>
                     </div>
                 </div>
