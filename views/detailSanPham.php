@@ -34,14 +34,14 @@
                             <div class="col-lg-5">
                                 <div class="product-large-slider">
                                     <?php foreach ($listAnhSanPham as $key => $anhSanPham): ?>
-                                    <div class="pro-large-img img-zoom">
+                                    <div class="pro-large-img ">
                                         <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="product-details" />
                                     </div>
                                     <?php endforeach; ?>
                                 </div>
                                 <div class="pro-nav slick-row-10 slick-arrow-style">
                                     <?php foreach ($listAnhSanPham as $key => $anhSanPham): ?>
-                                    <div class="pro-large-img img-zoom">
+                                    <div class="pro-large-img ">
                                         <img src="<?= BASE_URL . $anhSanPham['link_hinh_anh'] ?>" alt="product-details" />
                                     </div>
                                     <?php endforeach; ?>
@@ -57,8 +57,10 @@
                                         <a href="#"><?= $sanPham['ten_danh_muc'] ?></a>
                                     </div>
                                     <h3 class="product-name"><?= $sanPham['ten_san_pham'] ?></h3>
+
                                     <div class="ratings d-flex">
                                         <div class="pro-review">
+
                                             <?php $countComment = count($listBinhLuan); ?>
                                             <span><?= $countComment . ' Bình luận' ?></span>
                                         </div>
@@ -93,6 +95,7 @@
                         </div>
                     </div>
                     <!-- product details inner end -->
+                     
 
                     <!-- product details reviews start -->
                     <div class="product-details-reviews section-padding pb-0">
@@ -106,31 +109,39 @@
                                     </ul>
                                     <div class="tab-content reviews-tab">
                                         <div class="tab-pane fade show active" id="tab_three">
-                                            <?php foreach ($listBinhLuan as $binhLuan): ?>
-                                            <div class="total-reviews">
-                                                <div class="rev-avatar">
-                                                    <img src="<?= $binhLuan['anh_dai_dien'] ?>" alt="">
-                                                </div>
-                                                <div class="review-box">
-                                                    <div class="post-author">
-                                                        <p><span>Khách hàng - </span><?= $binhLuan['ngay_dang'] ?></p>
+                                           <h3>Bình luận</h3>
+                                        <div>
+                                            
+                                            <?php if (!empty($listBinhLuan)) : ?>
+                                                <?php foreach ($listBinhLuan as $binhLuan) : ?>
+                                                    <div class="binh-luan">
+                                                        <p><strong>Người dùng: </strong><?= $binhLuan['tai_khoan_id']; ?></p>
+                                                        <p><strong>Nội dung: </strong><?= htmlspecialchars($binhLuan['noi_dung']); ?></p>
+                                                        <p><em>Ngày: </em><?= $binhLuan['ngay_dang']; ?></p>
                                                     </div>
-                                                    <p><?= $binhLuan['noi_dung'] ?></p>
-                                                </div>
-                                            </div>
-                                            <?php endforeach; ?>
-                                            <form action="#" class="review-form">
-                                                <div class="form-group row">
-                                                    <div class="col">
-                                                        <label class="col-form-label"><span class="text-danger">*</span>
-                                                            Nội dung bình luận</label>
-                                                        <textarea class="form-control" required></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="buttons">
-                                                    <button class="btn btn-sqr" type="submit">Bình luận</button>
-                                                </div>
+                                                    <hr>
+                                                <?php endforeach; ?>
+                                            <?php else : ?>
+                                                <p>Chưa có bình luận nào.</p>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <h3>Bình luận</h3>
+                                            <?php if (isset($_SESSION['error'])) : ?>
+                                                <p class="error"><?= $_SESSION['error']; ?></p>
+                                            <?php endif; ?>
+                                            <?php if (isset($_SESSION['success'])) : ?>
+                                                <p class="success"><?= $_SESSION['success']; ?></p>
+                                            <?php endif; ?>
+
+                                            <form action="<?= BASE_URL ?>?act=add-binh-luan" method="POST">
+                                                <input type="hidden" name="san_pham_id" value="<?= $sanPham['id']; ?>">
+                                                <textarea name="noi_dung" rows="4" cols="50" placeholder="Nhập bình luận..."></textarea>
+                                                <br>
+                                                <button type="submit">Gửi bình luận</button>
                                             </form>
+
+
                                             <!-- end of review-form -->
                                         </div>
                                     </div>
@@ -152,6 +163,7 @@
             <div class="row">
                 <div class="col-12">
                     <!-- section title start -->
+
                     <div class="section-title text-center">
                         <h2 class="title">Sản phẩm liên quan</h2>
                         <p class="sub-title"></p>
@@ -198,6 +210,7 @@
                                     <span class="price-old"><del><?= fomatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
                                     <?php } else { ?>
                                     <span class="price-regular"><?= fomatPrice($sanPham['gia_san_pham']) . 'đ'; ?></span>
+
                                     <?php } ?>
                                 </div>
                             </div>
@@ -215,3 +228,4 @@
 
 <?php require_once 'views/layout/miniCart.php'; ?>
 <?php require_once 'views/layout/fooder.php'; ?>
+
