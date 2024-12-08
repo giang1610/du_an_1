@@ -9,12 +9,13 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './controllers/HomeController.php';
 
+require_once './controllers/DanhMuc.php';
+
 // Require toàn bộ file Models
 require_once './models/Student.php';
 require_once './models/sanPham.php';
 require_once './models/TaiKhoan.php';
 require_once './models/GioHang.php';
-require_once './models/BinhLuan.php';
 
 // if($_SERVER['REQUEST_METHOD' ] == 'POST') {
 //     echo '<pre>';
@@ -42,8 +43,7 @@ match ($act) {
     'chi-tiet-mua-hang'                      => (new HomeController())->chiTietMuaHang(),
     'lich-su-mua-hang'                       => (new HomeController())->lichSuMuaHang(),
     'huy-don-hang'                           => (new HomeController())->huyDonHang(),
-    //Bình luận
-    'add-binh-luan' => (new HomeController())->addBinhLuan(),
+
     // Auth
     'Register' => (new HomeController())->formRegister(),
     'them-Register' => (new HomeController())->postRegister(),

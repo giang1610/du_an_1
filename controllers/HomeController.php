@@ -32,6 +32,9 @@ class HomeController
 
     public function home() {
         $listSanPham = $this -> modelSanPham ->getAllSanPham();
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+
+        $listtop10 = $this->modelSanPham->top10();
         require_once './views/home.php';
     }
     
@@ -40,6 +43,8 @@ class HomeController
         $id = $_GET['id_san_pham'];
 
         $sanPham = $this->modelSanPham->getDetailSanPham($id);
+        
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
 
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
 
@@ -364,6 +369,37 @@ class HomeController
             var_dump('Bạn chưa đăng nhập!Vui lòng đăng nhập đẻ tiếp tục');
         }
     }
+
+    public function timKiem()
+    {
+        // Lấy danh sách danh mục và top 10 sản phẩm để hiển thị lên giao diện
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
+        $listtop10 = $this->modelSanPham->top10();
+
+        // Kiểm tra nếu phương thức gửi dữ liệu là POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Lấy từ khóa từ người dùng và loại bỏ khoảng trắng thừa
+            $keyword = trim($_POST['keyword'] ?? '');
+
+            if (empty($keyword)) {
+                // Nếu từ khóa rỗng, chuyển hướng hoặc hiển thị thông báo
+                $error = "Vui lòng nhập từ khóa tìm kiếm.";
+                header("Location: " . BASE_URL);
+                return;
+            }
+
+            // Tìm kiếm sản phẩm theo từ khóa
+            $listSanPhamTimKiem = $this->modelSanPham->search(htmlspecialchars($keyword));
+
+            // Hiển thị trang tìm kiếm
+            require_once './views/timKiemSp.php';
+        } else {
+            // Chuyển hướng về trang chủ nếu không phải phương thức POST
+            header("Location: " . BASE_URL);
+            exit;
+        }
+    }
+
     public function formAddDanhMuc() {
 
         require_once "./views/danhmuc/addDanhMuc.php";
