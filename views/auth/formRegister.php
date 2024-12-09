@@ -46,6 +46,20 @@
                                             <?php  }?>
                                 </div>
                                 <div class="single-input-item">
+                                <label >Ngày sinh</label>
+                                            <input type="date" class="form-control"  name="ngay_sinh" placeholder="Nhập ngày sinh ">
+                                            <?php if(isset($_SESSION['error']['ngay_sinh'])) {?>
+                                                <p class="text-danger"><?= $_SESSION['error']['ngay_sinh'] ?></p>
+                                            <?php  }?>
+                                </div>
+                                <div class="single-input-item">
+                                <label >Số điện thoại</label>
+                                            <input type="text" class="form-control"  name="so_dien_thoai" placeholder="Nhập Số điện thoại ">
+                                            <?php if(isset($_SESSION['error']['so_dien_thoai'])) {?>
+                                                <p class="text-danger"><?= $_SESSION['error']['Số điện thoại'] ?></p>
+                                            <?php  }?>
+                                </div>
+                                <div class="single-input-item">
                                     <button class="btn btn-dark" type="submit">Đăng ký</button>
                                 </div>
                             </form>

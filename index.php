@@ -48,7 +48,8 @@ match ($act) {
     'san-pham-theo-danh-muc' => (new DanhMucController())->sanPhamDanhMuc(),
     
     'search' => (new HomeController())->timKiem(),
-
+    //Bình luận
+    'add-binh-luan'=> (new HomeController())->addBinhLuan(),
     // Auth
     'Register' => (new HomeController())->formRegister(),
     'them-Register' => (new HomeController())->postRegister(),

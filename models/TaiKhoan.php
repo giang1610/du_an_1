@@ -64,6 +64,25 @@ class TaiKhoan
             echo "lỗi" . $e ->getMessage();
         }
     }
+    public function insertTaiKhoanKhachHang($ho_ten,$email, $password,$chuc_vu_id,$ngay_sinh,$so_dien_thoai){
+        try{
+            $sql = 'INSERT INTO tai_khoans (ho_ten,email, mat_khau,chuc_vu_id,ngay_sinh,so_dien_thoai) 
+            VALUES(:ho_ten,:email, :password,:chuc_vu_id,:ngay_sinh,:so_dien_thoai)
+            ';
+            $stmt = $this->conn->prepare($sql);
+            $stmt ->execute([
+                ':ho_ten' => $ho_ten,
+                ':email' => $email,
+                ':password' => $password,
+                ':chuc_vu_id' => $chuc_vu_id,
+                ':ngay_sinh' => $ngay_sinh,
+                ':so_dien_thoai' => $so_dien_thoai
+            ]);
+            return true;
+        }catch (Exception $e){
+            echo "lỗi" . $e ->getMessage();
+        }
+    }
 }
 
 ?>
