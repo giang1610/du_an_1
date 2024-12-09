@@ -39,6 +39,13 @@
                                             <?php  }?>
                                 </div>
                                 <div class="single-input-item">
+                                <label >Ngày Sinh</label>
+                                            <input type="date" class="form-control"  name="ngay_sinh" placeholder="Nhập ngày sinh ">
+                                            <?php if(isset($_SESSION['error']['ngay_sinh'])) {?>
+                                                <p class="text-danger"><?= $_SESSION['error']['ngay_sinh'] ?></p>
+                                            <?php  }?>
+                                </div>
+                                <div class="single-input-item">
                                 <label >Email</label>
                                             <input type="email" class="form-control"  name="email" placeholder="Nhập email ">
                                             <?php if(isset($_SESSION['error']['email'])) {?>

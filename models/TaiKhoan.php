@@ -64,10 +64,11 @@ class TaiKhoan
             echo "lỗi" . $e ->getMessage();
         }
     }
-    public function insertTaiKhoanKhachHang($ho_ten,$email, $password,$chuc_vu_id,$ngay_sinh,$so_dien_thoai){
+
+    public function insertTaiKhoanKhachHang($ho_ten,$email, $password,$chuc_vu_id,$ngay_sinh){
         try{
-            $sql = 'INSERT INTO tai_khoans (ho_ten,email, mat_khau,chuc_vu_id,ngay_sinh,so_dien_thoai) 
-            VALUES(:ho_ten,:email, :password,:chuc_vu_id,:ngay_sinh,:so_dien_thoai)
+            $sql = 'INSERT INTO tai_khoans (ho_ten,email, mat_khau,chuc_vu_id,ngay_sinh) 
+
             ';
             $stmt = $this->conn->prepare($sql);
             $stmt ->execute([
@@ -75,8 +76,8 @@ class TaiKhoan
                 ':email' => $email,
                 ':password' => $password,
                 ':chuc_vu_id' => $chuc_vu_id,
-                ':ngay_sinh' => $ngay_sinh,
-                ':so_dien_thoai' => $so_dien_thoai
+                ':ngay_sinh' => $ngay_sinh
+
             ]);
             return true;
         }catch (Exception $e){

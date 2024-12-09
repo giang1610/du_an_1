@@ -111,8 +111,6 @@
     </style>
 </head>
 
-<?php require_once 'layout/menu.php'; ?>
-
 <body>
 
     <div class="container">
