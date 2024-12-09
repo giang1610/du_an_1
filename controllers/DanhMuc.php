@@ -1,7 +1,7 @@
 <?php
 
 
-/*class DanhMucController
+class DanhMucController
 {
     public $modelSanPham;
     public $modelTaiKhoan;
