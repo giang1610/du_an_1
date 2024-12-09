@@ -18,6 +18,8 @@ require_once './models/AdminDanhMuc.php';
 require_once './models/AdminSanPham.php';
 require_once './models/AdminDonHang.php';
 require_once './models/AdminTaiKhoan.php';
+
+require_once './models/AdminThongKe.php';
 // Route
 $act = strtolower($_GET['act'] ?? '/');
 if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin'){
@@ -87,6 +89,9 @@ match ($act) {
   'login-admin' => (new AdminTaiKhoanControllers())->formLogin(),
   'check-login-admin' => (new AdminTaiKhoanControllers())->login(),
   'logout-admin' => (new AdminTaiKhoanControllers())->logout(),
+
+  
+  'bieu-do' => (new AdminBaoCaoThongKeControllers)->bieuDo(),
 
 };
 ?>

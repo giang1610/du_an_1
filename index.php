@@ -16,6 +16,7 @@ require_once './models/Student.php';
 require_once './models/sanPham.php';
 require_once './models/TaiKhoan.php';
 require_once './models/GioHang.php';
+require_once './models/BinhLuan.php';
 
 // if($_SERVER['REQUEST_METHOD' ] == 'POST') {
 //     echo '<pre>';
@@ -43,6 +44,10 @@ match ($act) {
     'chi-tiet-mua-hang'                      => (new HomeController())->chiTietMuaHang(),
     'lich-su-mua-hang'                       => (new HomeController())->lichSuMuaHang(),
     'huy-don-hang'                           => (new HomeController())->huyDonHang(),
+    //sanpham
+    'san-pham-theo-danh-muc' => (new DanhMucController())->sanPhamDanhMuc(),
+    
+    'search' => (new HomeController())->timKiem(),
 
     // Auth
     'Register' => (new HomeController())->formRegister(),

@@ -35,7 +35,6 @@
              <nav class="desktop-menu">
                  <ul>
                      <li><a href="<?= BASE_URL ?>">Trang chủ </i></a>
-
                      </li>
 
                      <li><a href="<?= BASE_URL . '?act=san-pham-theo-danh-muc' ?>">Sản phẩm <i class="fa fa-angle-down"></i></a>
