@@ -1,7 +1,7 @@
 
 <?php 
 require_once './models/DonHang.php'; // Đường dẫn chính xác đến file ModelDonHang
-
+require_once './models/BinhLuan.php';
 
 class HomeController
 {
@@ -73,7 +73,7 @@ class HomeController
             $chuc_vu_id=$_POST['chuc_vu_id'] ?? 2;
             $ho_ten = $_POST['ho_ten'] ?? '';
             $email = $_POST['email'] ?? '';
-
+            $ngay_sinh = $_POST['ngay_sinh'] ?? '';
            
 
             $errors = [];
@@ -83,13 +83,16 @@ class HomeController
             if(empty($email)){
                 $errors['email'] = 'Email không trống';
             }
-
+            if(empty($ngay_sinh)){
+                $errors['ngay_sinh'] = 'Ngày sinh không trống';
+            }
             $_SESSION['error'] = $errors;
 
             if(empty($errors)){
                 
                 $password = password_hash('123@123ab', PASSWORD_BCRYPT);
-                $this->modelTaiKhoan->insertTaiKhoan($ho_ten,$email, $password,$chuc_vu_id);
+
+                $this->modelTaiKhoan->insertTaiKhoanKhachHang($ho_ten,$email, $password,$chuc_vu_id,$ngay_sinh);
                 $_SESSION['success'] = 'Đăng ký thành công! Mật khẩu mặc định là: 123@123ab.';
                 header("location:".BASE_URL .'?act=login');
                 exit();

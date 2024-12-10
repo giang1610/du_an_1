@@ -1,27 +1,21 @@
- 
-
-
-
-
-    
-
-
-
-                        
-
-
-
-
-
-
-<p>
-        <marquee behavior="alternate" direction="left">
-            Chào mừng đến với Thế Giới Gấu Bông. Nơi mang yêu thương qua những chú gấu bông dễ thương!
-        </marquee>
-    </p>
-    <main class="main-content">
-        
-        <section class="why-us">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <main>
+         <section>
+        <p>
+                <marquee behavior="alternate" direction="left">
+                    Chào mừng đến với Thế Giới Gấu Bông. Nơi mang yêu thương qua những chú gấu bông dễ thương!
+                </marquee>
+        </p>
+         </section>
+         <section class="why-us">
             <h2>Tại sao chọn chúng tôi?</h2>
             <ul>
                 <li><strong>Chất lượng đảm bảo:</strong> Gấu bông mềm mại, an toàn.</li>
@@ -34,8 +28,6 @@
             <h2>Đồng hành cùng cảm xúc</h2>
             <p>Chúng tôi không chỉ bán gấu bông mà còn góp phần tạo nên những khoảnh khắc đáng nhớ trong cuộc sống của bạn và người thân yêu.</p>
         </section>
-    </main>
-    <main class="main-content">
         <section class="intro">
             <div class="content">
                 <h2>Chúng tôi là ai?</h2>
@@ -111,109 +103,71 @@
             </div>
         </section>
     </main>
+    <style>
+            h2{
+                color: #e36973;
+            }
+            h3{
+                color: #e17981;
+            }
+            marquee{
+                color: #e99ba1;
+            }
+            .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%; /* hoặc chiều rộng tùy chỉnh */
+            box-sizing: border-box;
+        }
+        .marquee-container h1 {
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+            font-size: 2rem;
+            color: #c2185b;
+        }
+        .marquee-container p {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+            color: #721c24;
+            font-size: 1.2rem;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .main-content {
+            margin-left: 200px;
+        }
+        .features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 4px solid #c2185b;
+            background: #fdf2f8;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
 
+    </style>
 
-
-        <style>
-    
-    h2{
-        color: #e36973;
-    }
-    h3{
-        color: #e17981;
-    }
-    marquee{
-        color: #e99ba1;
-    }
-     .marquee-container {
-    overflow: hidden;
-    white-space: nowrap;
-    width: 100%; /* hoặc chiều rộng tùy chỉnh */
-    box-sizing: border-box;
-}
-
-.marquee-container h1 {
-    display: inline-block;
-    animation: marquee 10s linear infinite;
-    font-size: 2rem;
-    color: #c2185b;
-}
-
-.marquee-container p {
-    display: inline-block;
-    animation: marquee 15s linear infinite;
-    color: #721c24;
-    font-size: 1.2rem;
-}
-
-@keyframes marquee {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
-
-  
-
-
-
-
-.main-content {
-    margin-left: 200px;
-}
-
-
-
-
-
-.features {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-
-.faq-item {
-    margin-bottom: 15px;
-    padding: 10px;
-    border-left: 4px solid #c2185b;
-    background: #fdf2f8;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-
-
-
-
-
-
-
-.features {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-
-
-
-
-  
-  
-
-
-
-
-.features {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-
-
-
-</style>
-
-<?php require_once 'layout/fooder.php'; ?>
+    <footer>
+        <?php require_once 'layout/fooder.php'; ?>
+    </footer>
+</body>
+</html>
